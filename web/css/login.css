@@ -123,10 +123,13 @@ a:hover {
 }
 
 .login {
-  position: relative;
-  margin: auto auto auto auto;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -50px;
   width: 400px;
-  height: 300px;
+  height: 100px;
   padding-right: 32px;
   font-weight: 300;
   color: #a8a7a8;
