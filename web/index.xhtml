@@ -10,17 +10,17 @@
     <h:body>
         <div id="login">
 
-            <form action="javascript:void(0);" method="get">
+            <form action="home.xhtml" method="get">
 
                 <fieldset class="clearfix">
 
                     <p><span class="fontawesome-user"></span><input type="text" value="Username" onBlur="if (this.value == '')
                                 this.value = 'Username'" onFocus="if (this.value == 'Username')
-                                            this.value = ''" required></p>
+                                            this.value = ''" required="true"/></p>
                     <p><span class="fontawesome-lock"></span><input type="password"  value="Password" onBlur="if (this.value == '')
                                 this.value = 'Password'" onFocus="if (this.value == 'Password')
-                                            this.value = ''" required></p>
-                    <p><input type="submit" value="Sign In"></p>
+                                            this.value = ''" required="true"/></p>
+                    <p><input type="submit" value="Sign In"/></p>
 
                 </fieldset>
 
@@ -28,8 +28,7 @@
 
             <p>Not a member? <a href="#">Sign up now</a><span class="fontawesome-arrow-right"></span></p>
 
-        </div> <!-- end login -->
-
+        </div>
     </h:body>
 </html>
 
