@@ -4,30 +4,26 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <meta charset="UTF-8"/>
-        <title>Login - CodePen</title>
+        <title>Score Tracker Login</title>
         <link rel="stylesheet" href="css/login.css" media="screen" type="text/css" />
     </h:head>
     <h:body>
         <div id="login">
-
             <form action="home.xhtml" method="get">
-
                 <fieldset class="clearfix">
-
-                    <p><span class="fontawesome-user"></span><input type="text" value="Username" onBlur="if (this.value == '')
-                                this.value = 'Username'" onFocus="if (this.value == 'Username')
-                                            this.value = ''" required="true"/></p>
-                    <p><span class="fontawesome-lock"></span><input type="password"  value="Password" onBlur="if (this.value == '')
-                                this.value = 'Password'" onFocus="if (this.value == 'Password')
-                                            this.value = ''" required="true"/></p>
+                    <p>
+                        <span class="fontawesome-user"></span>
+                        <input type="text" name="username" placeholder="Username" required="true"/>
+                    </p>
+                    
+                    <p>
+                        <span class="fontawesome-lock"></span>
+                        <input type="password" name="password"  placeholder="Password" required="true"/>
+                    </p>
                     <p><input type="submit" value="Sign In"/></p>
-
                 </fieldset>
-
             </form>
-
-            <p>Not a member? <a href="#">Sign up now</a><span class="fontawesome-arrow-right"></span></p>
-
+            <!--<p>Not a member? <a href="#">Sign up now</a><span class="fontawesome-arrow-right"></span></p>-->
         </div>
     </h:body>
 </html>
