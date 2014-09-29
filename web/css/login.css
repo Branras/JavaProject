@@ -59,8 +59,14 @@ p {
 /* ---------- LOGIN ---------- */
 
 #login {
-	margin: 50px auto;
+	//margin: 50px auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -100px;
+        margin-top: -140px;
 	width: 280px;
+        height: 200px;
 }
 
 #login form span {
@@ -92,7 +98,7 @@ p {
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
-	background-color: #ea4c88;
+	background-color: #3FC380;
 	color: #eee;
 	font-weight: bold;
 	margin-bottom: 2em;
@@ -101,7 +107,7 @@ p {
 }
 
 #login form input[type="submit"]:hover {
-	background-color: #d44179;
+	background-color: #00B16A;
 }
 
 #login > p {
