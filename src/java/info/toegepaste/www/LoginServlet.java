@@ -6,6 +6,7 @@
 package info.toegepaste.www;
 
 import info.toegepaste.db.*;
+import info.toegepaste.www.beans.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -29,8 +30,9 @@ import javax.servlet.http.HttpSession;
     @WebInitParam(name = "driver", value = "com.mysql.jdbc.Driver")})
 
 public class LoginServlet extends HttpServlet {
+
     private DADocent dadocent = null;
-    
+
     @Override
     public void init() throws ServletException {
         try {
@@ -42,13 +44,11 @@ public class LoginServlet extends HttpServlet {
             if (dadocent == null) {
                 dadocent = new DADocent(url, login, password, driver);
             }
-            
 
         } catch (ClassNotFoundException | SQLException e) {
             throw new ServletException(e);
         }
     }
-    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -61,8 +61,22 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
+        if (request.getParameter("login") != null) {
+            String login = request.getParameter("login");
+            String pass = request.getParameter("pass");
+
+            Docent docent = dadocent.getLogin(login, pass);
+
+            if (docent != null) {
+                RequestDispatcher rd = request.getRequestDispatcher("home.xhtml");
+            } else {
+                RequestDispatcher rd = request.getRequestDispatcher("index.xhtml");
+            }
+
+            rd.forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

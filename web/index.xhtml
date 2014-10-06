@@ -9,16 +9,16 @@
     </h:head>
     <h:body>
         <div id="login">
-            <form action="LoginServlet" method="post">
+            <form action="LoginServlet?dologin" method="post">
                 <fieldset class="clearfix">
                     <p>
                         <span class="fontawesome-user"></span>
-                        <input type="text" name="username" placeholder="Username" required="true"/>
+                        <input type="text" name="login" placeholder="Username" required="true"/>
                     </p>
                     
                     <p>
                         <span class="fontawesome-lock"></span>
-                        <input type="password" name="password"  placeholder="Password" required="true"/>
+                        <input type="password" name="pass"  placeholder="Password" required="true"/>
                     </p>
                     <p><input type="submit" value="Sign In"/></p>
                 </fieldset>
