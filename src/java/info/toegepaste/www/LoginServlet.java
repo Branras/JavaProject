@@ -71,14 +71,8 @@ public class LoginServlet extends HttpServlet {
             if (docent != null) {
                 RequestDispatcher rd = request.getRequestDispatcher("home.xhtml");
                 rd.forward(request, response);
-            } else {
-                RequestDispatcher rd = request.getRequestDispatcher("index.xhtml");
-                rd.forward(request, response);
-            }
-        } else {
-            RequestDispatcher rd = request.getRequestDispatcher("home.xhtml");
-            rd.forward(request, response);
-        }
+            } 
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
