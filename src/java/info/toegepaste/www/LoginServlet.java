@@ -5,10 +5,13 @@
  */
 package info.toegepaste.www;
 
+import info.toegepaste.db.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +22,33 @@ import javax.servlet.http.HttpSession;
  *
  * @author brams
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
-
+@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"}, initParams = {
+    @WebInitParam(name = "url", value = "jdbc:mysql://db4free.net:3306/projectdbjava"),
+    @WebInitParam(name = "login", value = "awesomemoo"),
+    @WebInitParam(name = "password", value = "radar1234"),
+    @WebInitParam(name = "driver", value = "com.mysql.jdbc.Driver")})
 
 public class LoginServlet extends HttpServlet {
+    private DADocent dadocent = null;
+    
+    @Override
+    public void init() throws ServletException {
+        try {
+            String url = getInitParameter("url");
+            String password = getInitParameter("password");
+            String login = getInitParameter("login");
+            String driver = getInitParameter("driver");
+
+            if (dadocent == null) {
+                dadocent = new DADocent(url, login, password, driver);
+            }
+            
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new ServletException(e);
+        }
+    }
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
