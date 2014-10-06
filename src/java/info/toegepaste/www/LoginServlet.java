@@ -75,6 +75,9 @@ public class LoginServlet extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("index.xhtml");
                 rd.forward(request, response);
             }
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("home.xhtml");
+            rd.forward(request, response);
         }
     }
 
