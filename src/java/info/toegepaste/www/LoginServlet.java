@@ -20,6 +20,8 @@ import javax.servlet.http.HttpSession;
  * @author brams
  */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+
+
 public class LoginServlet extends HttpServlet {
 
     /**
