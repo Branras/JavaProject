@@ -9,6 +9,15 @@
     </h:head>
     <h:body>
         <div id="login">
+            <h:form>
+                <h:inputText value="#{loginController.login}"/>
+                <h:inputText value="#{loginController.pass}"/>
+                
+                <h:commandButton value="Sign in" action="#{loginController.dologin()}"/>
+            </h:form>
+            
+            
+            
             <form action="LoginController" method="post">
                 <fieldset class="clearfix">
                     <p>

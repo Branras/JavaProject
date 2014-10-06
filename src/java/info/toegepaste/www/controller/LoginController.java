@@ -16,10 +16,37 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean(name="loginController")
 public class LoginController {
-    private Docent docent;
-    
     @EJB
     private LoginService loginservice;
+    
+    private Docent docent;
+    
+    
+    //login
+    private String login;
+    private String pass;
+    
+    public String dologin(){
+        return login;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+    
+    
 
     public Docent getDocent(String login, String pass) {
         return loginservice.getLogin(login, pass) ;
