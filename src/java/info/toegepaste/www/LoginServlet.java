@@ -5,7 +5,7 @@
  */
 package info.toegepaste.www;
 
-import info.toegepaste.db.*;
+import info.toegepaste.model.DADocent;
 import info.toegepaste.www.beans.*;
 import java.io.IOException;
 import java.io.PrintWriter;
