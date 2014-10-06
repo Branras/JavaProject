@@ -5,7 +5,7 @@
  */
 package info.toegepaste.www.service;
 
-import info.toegepaste.www.beans.Docent;
+import info.toegepaste.www.model.Docent;
 
 /**
  *

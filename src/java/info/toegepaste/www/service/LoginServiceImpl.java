@@ -5,12 +5,14 @@
  */
 package info.toegepaste.www.service;
 
-import info.toegepaste.www.beans.Docent;
+import info.toegepaste.www.model.Docent;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -25,7 +27,10 @@ public class LoginServiceImpl implements LoginService{
     @Override
     @TransactionAttribute(REQUIRES_NEW)
     public Docent getLogin(String login, String pass) {
-        return null;
+        Query q = em.createQuery("SELECT d FROM docent d WHERE d.login=? AND d.pass=?");
+        q.setParameter(1, login);
+        q.setParameter(2, pass);
+        return (Docent) q.getResultList();
     }
     
 }
