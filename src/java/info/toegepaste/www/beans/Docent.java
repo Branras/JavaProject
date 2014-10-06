@@ -6,6 +6,7 @@
 package info.toegepaste.www.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Docent {
+    @Id
     int id;
     String naam;
     String familienaam;
@@ -60,7 +62,5 @@ public class Docent {
 
     public void setPass(String pass) {
         this.pass = pass;
-    }
-    
-    
+    } 
 }
