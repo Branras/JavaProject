@@ -5,15 +5,18 @@
  */
 package info.toegepaste.www.beans;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author brams
  */
 @Entity
-public class Docent {
+@Table(name="docent")
+public class Docent implements Serializable{
     @Id
     int id;
     String naam;
