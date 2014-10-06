@@ -11,7 +11,7 @@ import info.toegepaste.www.beans.Docent;
  *
  * @author brams
  */
-public interface LoginInterface {
+public interface LoginService {
     
     public Docent getLogin(String login, String pass);
 }
