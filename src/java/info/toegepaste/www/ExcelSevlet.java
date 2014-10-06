@@ -37,7 +37,7 @@ public class ExcelSevlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ExcelSevlet</title>");            
+            out.println("<title>Servlet ExcelSevlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ExcelSevlet at " + request.getContextPath() + "</h1>");
@@ -46,17 +46,71 @@ public class ExcelSevlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void excelTest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+     
+    FileInputStream file = new FileInputStream(new File("C:\\test.xls"));
+     
+    //Get the workbook instance for XLS file 
+    XSSFWorkbook workbook = new XSSFWorkbook(file);
+ 
+    //Get first sheet from the workbook
+    XSSFSheet sheet = workbook.getSheetAt(0);
+     
+    //Iterate through each rows from first sheet
+    Iterator<Row> rowIterator = sheet.iterator();
+    while(rowIterator.hasNext()) {
+        Row row = rowIterator.next();
+         
+        //For each row, iterate through each columns
+        Iterator<Cell> cellIterator = row.cellIterator();
+        while(cellIterator.hasNext()) {
+             
+            Cell cell = cellIterator.next();
+             
+            switch(cell.getCellType()) {
+                case Cell.CELL_TYPE_BOOLEAN:
+                    System.out.print(cell.getBooleanCellValue() + "\t\t");
+                    break;
+                case Cell.CELL_TYPE_NUMERIC:
+                    System.out.print(cell.getNumericCellValue() + "\t\t");
+                    break;
+                case Cell.CELL_TYPE_STRING:
+                    System.out.print(cell.getStringCellValue() + "\t\t");
+                    break;
+            }
+        }
+        System.out.println("");
+    }
+    file.close();
+    FileOutputStream out = 
+        new FileOutputStream(new File("C:\\test.xls"));
+    workbook.write(out);
+    out.close();
+     
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+
+    }
+
+}
+
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+/**
+ * Handles the HTTP <code>GET</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -70,7 +124,7 @@ public class ExcelSevlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -81,7 +135,7 @@ public class ExcelSevlet extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
