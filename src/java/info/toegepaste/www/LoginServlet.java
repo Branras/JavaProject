@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        if (request.getParameter("login") != null) {
+        if (request.getParameter("dologin") != null) {
             String login = request.getParameter("login");
             String pass = request.getParameter("pass");
 
