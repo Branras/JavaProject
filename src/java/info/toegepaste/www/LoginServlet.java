@@ -65,13 +65,21 @@ public class LoginServlet extends HttpServlet {
         if (request.getParameter("dologin") != null) {
             String login = request.getParameter("login");
             String pass = request.getParameter("pass");
+            
+            HttpSession session = request.getSession();
+
 
             Docent docent = dadocent.getLogin(login, pass);
 
             if (docent != null) {
+                session.setAttribute("docent", docent);
+                
                 RequestDispatcher rd = request.getRequestDispatcher("home.xhtml");
                 rd.forward(request, response);
-            } 
+            }else{
+                RequestDispatcher rd = request.getRequestDispatcher("index.xhtml");
+                rd.forward(request, response);
+            }
         } 
     }
 
