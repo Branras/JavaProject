@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package info.toegepaste.model;
+package info.toegepaste.www.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
