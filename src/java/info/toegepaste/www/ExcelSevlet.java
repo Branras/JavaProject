@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,8 +42,8 @@ public class ExcelSevlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         excelTest(request, response);
-        
-        
+        RequestDispatcher rd = request.getRequestDispatcher("exceltest.xhtml");
+                rd.forward(request, response);
     }
 
     protected void excelTest(HttpServletRequest request, HttpServletResponse response)
