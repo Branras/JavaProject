@@ -20,7 +20,6 @@ import javax.persistence.Query;
  */
 @Stateless
 public class LoginServiceImpl implements LoginService{
-
     @PersistenceContext
     private EntityManager em;
     
