@@ -9,13 +9,23 @@
     </h:head>
     <h:body>
         <div id="login">
+
             <h:form>
-                <h:inputText value="#{loginController.login}"/>
-                <h:inputText value="#{loginController.pass}"/>
-                
-                <h:commandButton value="Sign in" action="#{loginController.dologin()}"/>
+                <fieldset class="clearfix">
+                    <p>
+                        <span class="fontawesome-user"></span>
+                        <h:inputText value="#{loginController.login}"/>
+                    </p>
+                    
+                    <p>
+                        <span class="fontawesome-lock"></span>
+                        <h:inputText value="#{loginController.pass}" class=""/>
+                    </p>
+
+                    <p><h:commandButton value="Sign In" action="#{loginController.dologin()}"/></p>
+                </fieldset>
             </h:form>
-            
+
             <!--<p>Not a member? <a href="#">Sign up now</a><span class="fontawesome-arrow-right"></span></p>-->
         </div>
     </h:body>
