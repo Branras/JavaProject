@@ -51,12 +51,10 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public ModelAndView dologin() {
+    public RedirectView dologin() {
         //Docent docent = getDocent(login, pass);
-        
-       // RedirectView redirectView = new RedirectView();
-       // redirectView.setUrl("http://www.yahoo.com");
-      //  return redirectView;
-        return new ModelAndView("redirect:JavaProject/faces/home");
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://www.yahoo.com");
+        return redirectView;
     }
 }
