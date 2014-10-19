@@ -49,12 +49,13 @@ public class LoginController {
         return loginservice.getLogin(login, pass);
     }
 
-    @RequestMapping("/home")
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public RedirectView dologin() {
         //Docent docent = getDocent(login, pass);
         
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://www.yahoo.com");
-        return redirectView;
+       // RedirectView redirectView = new RedirectView();
+       // redirectView.setUrl("http://www.yahoo.com");
+      //  return redirectView;
+        return new RedirectView("/mySuperSexyStuff");
     }
 }
