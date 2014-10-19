@@ -5,14 +5,10 @@
  */
 package info.toegepaste.www.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.view.RedirectView;
 import info.toegepaste.www.model.*;
 import info.toegepaste.www.service.*;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import org.springframework.web.portlet.ModelAndView;
 
 /**
  *
