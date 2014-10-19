@@ -27,7 +27,7 @@ public class LoginServiceImpl implements LoginService{
     @Override
     @TransactionAttribute(REQUIRES_NEW)
     public Docent getLogin(String login, String pass) {
-        Query q = em.createQuery("SELECT d FROM docent d WHERE d.login=? AND d.pass=?");
+        Query q = em.createQuery("SELECT d FROM docent d WHERE d.Login=? AND d.Pass=?");
         q.setParameter(1, login);
         q.setParameter(2, pass);
         return (Docent) q.getSingleResult();
