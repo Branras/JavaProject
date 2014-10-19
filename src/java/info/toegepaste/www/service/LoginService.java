@@ -12,6 +12,5 @@ import info.toegepaste.www.model.Docent;
  * @author brams
  */
 public interface LoginService {
-    
     public Docent getLogin(String login, String pass);
 }
