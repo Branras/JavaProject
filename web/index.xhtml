@@ -14,12 +14,12 @@
                 <fieldset class="clearfix">
                     <p>
                         <span class="fontawesome-user"></span>
-                        <h:inputText value="#{loginController.login}"/>
+                        <h:inputText value="#{loginController.login}" class=""  required/>
                     </p>
                     
                     <p>
                         <span class="fontawesome-lock"></span>
-                        <h:inputText value="#{loginController.pass}" class=""/>
+                        <h:inputSecret value="#{loginController.pass}" class=""  required/>
                     </p>
 
                     <p><h:commandButton value="Sign In" action="#{loginController.dologin()}"/></p>
