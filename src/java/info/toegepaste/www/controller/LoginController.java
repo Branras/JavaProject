@@ -51,7 +51,7 @@ public class LoginController {
 
     @RequestMapping("/home")
     public RedirectView dologin() {
-        Docent docent = getDocent(getLogin(), getPass());
+        Docent docent = getDocent(login, pass);
         
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://www.yahoo.com");
