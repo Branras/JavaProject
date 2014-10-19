@@ -51,10 +51,5 @@ public class LoginController {
     public void dologin() {
         Docent docent = getDocent(getLogin(), getPass());
 
-        if (docent.getNaam() != null) {
-            
-        }else{
-            
-        }
     }
 }
