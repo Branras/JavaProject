@@ -11,8 +11,6 @@ import info.toegepaste.www.model.*;
 import info.toegepaste.www.service.*;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -50,14 +48,13 @@ public class LoginController {
         return loginservice.getLogin(login, pass);
     }
 
-    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public String dologin() {
-        Docent docent = getDocent(login, pass);
+    public void dologin() {
+        Docent docent = getDocent(getLogin(), getPass());
 
         if (docent.getNaam() != null) {
-            return "home";
+            
         }else{
-            return "index";
+            
         }
     }
 }
