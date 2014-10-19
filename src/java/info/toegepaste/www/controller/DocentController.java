@@ -23,7 +23,6 @@ public class DocentController {
     @EJB
     private DocentService docentService;
     
-    @PostConstruct
     public void init() {
         docenten = docentService.getAllDocenten();
     }
