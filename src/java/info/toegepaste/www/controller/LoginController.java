@@ -12,6 +12,7 @@ import info.toegepaste.www.model.*;
 import info.toegepaste.www.service.*;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import org.springframework.web.portlet.ModelAndView;
 
 /**
  *
@@ -50,12 +51,12 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public RedirectView dologin() {
+    public ModelAndView dologin() {
         //Docent docent = getDocent(login, pass);
         
        // RedirectView redirectView = new RedirectView();
        // redirectView.setUrl("http://www.yahoo.com");
       //  return redirectView;
-        return new RedirectView("/mySuperSexyStuff");
+        return new ModelAndView("redirect:JavaProject/faces/home.xhtml");
     }
 }
