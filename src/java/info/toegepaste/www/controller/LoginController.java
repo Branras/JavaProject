@@ -7,6 +7,7 @@ package info.toegepaste.www.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.view.RedirectView;
 import info.toegepaste.www.model.*;
 import info.toegepaste.www.service.*;
 import javax.ejb.EJB;
@@ -48,8 +49,12 @@ public class LoginController {
         return loginservice.getLogin(login, pass);
     }
 
-    public void dologin() {
+    @RequestMapping("/home")
+    public RedirectView dologin() {
         Docent docent = getDocent(getLogin(), getPass());
-
+        
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://www.yahoo.com");
+        return redirectView;
     }
 }
