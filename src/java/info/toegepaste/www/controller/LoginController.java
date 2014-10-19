@@ -49,7 +49,7 @@ public class LoginController {
         return loginservice.getLogin(login, pass);
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
     public RedirectView dologin() {
         //Docent docent = getDocent(login, pass);
         
