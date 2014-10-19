@@ -16,7 +16,7 @@ import javax.faces.bean.ManagedBean;
  *
  * @author brams
  */
-@ManagedBean(name="docentcontroller")
+@ManagedBean(name="docentController")
 public class DocentController {
     private List<Docent> docenten;
     

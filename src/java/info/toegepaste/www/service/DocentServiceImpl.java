@@ -24,6 +24,7 @@ public class DocentServiceImpl implements DocentService{
     private EntityManager em;
     
     @TransactionAttribute(REQUIRES_NEW)
+    @Override
     public List<Docent> getAllDocenten() {
         Query q = em.createQuery("SELECT d FROM Docent d");
         return (List<Docent>) q.getResultList();          
