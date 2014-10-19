@@ -57,6 +57,6 @@ public class LoginController {
        // RedirectView redirectView = new RedirectView();
        // redirectView.setUrl("http://www.yahoo.com");
       //  return redirectView;
-        return new ModelAndView("redirect:JavaProject/faces/home.xhtml");
+        return new ModelAndView("redirect:JavaProject/faces/home");
     }
 }
