@@ -5,26 +5,31 @@
  */
 package info.toegepaste.www.controller;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import info.toegepaste.www.model.*;
 import info.toegepaste.www.service.*;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
  * @author brams
  */
-@ManagedBean(name="loginController")
+@ManagedBean(name = "loginController")
 public class LoginController {
+
     @EJB
     private LoginService loginservice;
-    
+
     private Docent docent;
-    
+
     //login
     private String login;
     private String pass;
-    
+
     public String getLogin() {
         return login;
     }
@@ -42,15 +47,16 @@ public class LoginController {
     }
 
     public Docent getDocent(String login, String pass) {
-        return loginservice.getLogin(login, pass) ;
+        return loginservice.getLogin(login, pass);
     }
-    
-    public void dologin(){
+
+    public String dologin() {
         Docent docent = getDocent(login, pass);
-        
-        if(docent.getNaam() != null)
-        {
-            
+
+        if (docent.getNaam() != null) {
+            return "home";
+        }else{
+            return "index";
         }
     }
 }
