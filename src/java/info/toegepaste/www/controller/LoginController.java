@@ -50,6 +50,7 @@ public class LoginController {
         return loginservice.getLogin(login, pass);
     }
 
+    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
     public String dologin() {
         Docent docent = getDocent(login, pass);
 
