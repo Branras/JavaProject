@@ -19,7 +19,7 @@
                     
                     <p>
                         <span class="fontawesome-lock"></span>
-                        <h:inputSecret value="#{loginController.pass}" pt:placeholder="password" class="" required="true"/>
+                        <h:inputSecret id="input_pass" value="#{loginController.pass}" pt:placeholder="password" class="" required="true"/>
                     </p>
 
                     <p><h:commandButton value="Sign In" action="#{loginController.dologin()}"/></p>
