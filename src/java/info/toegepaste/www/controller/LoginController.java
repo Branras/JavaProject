@@ -21,15 +21,10 @@ public class LoginController {
     
     private Docent docent;
     
-    
     //login
     private String login;
     private String pass;
     
-    public String dologin(){
-        return login;
-    }
-
     public String getLogin() {
         return login;
     }
@@ -45,13 +40,17 @@ public class LoginController {
     public void setPass(String pass) {
         this.pass = pass;
     }
-    
-    
 
     public Docent getDocent(String login, String pass) {
         return loginservice.getLogin(login, pass) ;
     }
-
     
-    
+    public void dologin(){
+        Docent docent = getDocent(login, pass);
+        
+        if(docent.getNaam() != null)
+        {
+            
+        }
+    }
 }
