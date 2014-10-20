@@ -9,6 +9,10 @@ import info.toegepaste.www.model.*;
 import info.toegepaste.www.service.*;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -18,7 +22,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
  * @author brams
  */
 @ManagedBean(name = "loginController")
-@SessionAttributes("docentsession")
 public class LoginController {
 
     @EJB
@@ -29,22 +32,6 @@ public class LoginController {
     private String login;
     private String pass;
     private String error = "";
-
-    //test
-    @RequestMapping(method = GET)
-    public String get(Model model) {
-        if (!model.containsAttribute("docentsession")) {
-            model.addAttribute("docentsession", new Docent());
-        }
-        return "docentsession";
-    }
-
-    // Obtain 'mycounter' object for this user's session and increment it
-    @RequestMapping(method = POST)
-    public String post(@ModelAttribute("docentsession") Docent docent) {
-        
-        return "home";
-    }
 
     public String getLogin() {
         return login;
@@ -77,8 +64,14 @@ public class LoginController {
     public String dologin() {
         docent = getDocent(login, pass);
         if (docent != null) {
-
-            return "home";
+            FacesContext context = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+            session.setAttribute("docentid", docent.getId());
+            
+            String id = (String)session.getAttribute("docentid");
+            
+            error = id;
+            return "login";
         } else {
             error = "Your username or password is not valid!";
             return "login";
