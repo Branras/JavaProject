@@ -62,7 +62,7 @@ public class LoginController {
         if (docent != null) {
             return "home";
         } else {
-            error = "Your username or password isn't valid!";
+            error = "Your username or password is not valid!";
             return "login";
         }
 
