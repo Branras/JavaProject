@@ -8,7 +8,9 @@ package info.toegepaste.www.controller;
 import info.toegepaste.www.model.*;
 import info.toegepaste.www.service.*;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -51,6 +53,7 @@ public class LoginController {
         if (docent != null) {
             return "home";
         } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You're username or password isn't valid"));
             return "login";
         }
 
