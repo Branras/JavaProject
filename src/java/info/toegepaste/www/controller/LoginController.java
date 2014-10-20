@@ -27,6 +27,7 @@ public class LoginController {
     //login
     private String login;
     private String pass;
+    private String error = "";
 
     public String getLogin() {
         return login;
@@ -44,6 +45,14 @@ public class LoginController {
         this.pass = pass;
     }
 
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
     public Docent getDocent(String login, String pass) {
         return loginservice.getLogin(login, pass);
     }
@@ -53,7 +62,7 @@ public class LoginController {
         if (docent != null) {
             return "home";
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You're username or password isn't valid"));
+            error = "You're username or password isn't valid";
             return "login";
         }
 

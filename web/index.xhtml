@@ -25,6 +25,8 @@
                     <p><h:commandButton value="Sign In" action="#{loginController.dologin()}"/></p>
                 </fieldset>
             </h:form>
+            
+            <p><h:outputText value="#{loginController.error}"/></p>
             <!--<p>Not a member? <a href="#">Sign up now</a><span class="fontawesome-arrow-right"></span></p>-->
         </div>
     </h:body>
