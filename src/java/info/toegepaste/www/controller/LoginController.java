@@ -48,7 +48,7 @@ public class LoginController {
 
     public String dologin() {
         docent = getDocent(login, pass);
-        if (docent.getId() != null) {
+        if (docent != null) {
             return "home";
         } else {
             return "login";
