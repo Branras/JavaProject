@@ -20,11 +20,15 @@
         <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 
         <script>
+            //DIT TOEVOEGEN OP IEDERE PAGINA
+            //MUCH SECURITY
+            //VERY AWESOME
+            //NICE CODE
             var docentid = null;
             docentid = " " + '<h:outputText value="${sessionScope.docent.getId()}"/>';
             if (docentid === " ")
             {
-                alert("bye bye");
+                //alert("bye bye");
                 window.location = "index.xhtml";
             }
         </script>
