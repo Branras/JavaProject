@@ -43,7 +43,7 @@ public class LoginController {
     @RequestMapping(method = POST)
     public String post(@ModelAttribute("docentsession") Docent docent) {
         
-        return "redirect:/counter";
+        return "home";
     }
 
     public String getLogin() {
@@ -78,10 +78,10 @@ public class LoginController {
         docent = getDocent(login, pass);
         if (docent != null) {
 
-            return "redirect:/home";
+            return "home";
         } else {
             error = "Your username or password is not valid!";
-            return "redirect:/login";
+            return "login";
         }
 
     }
