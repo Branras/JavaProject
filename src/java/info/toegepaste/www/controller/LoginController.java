@@ -68,7 +68,7 @@ public class LoginController {
             HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
             session.setAttribute("docentid", docent.getId());
             
-            String id = (String)session.getAttribute("docentid");
+            String id = (String)session.getAttribute("docentid").toString();
             
             error = id;
             return "login";
