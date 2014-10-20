@@ -8,26 +8,43 @@ package info.toegepaste.www.controller;
 import info.toegepaste.www.model.*;
 import info.toegepaste.www.service.*;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
  *
  * @author brams
  */
 @ManagedBean(name = "loginController")
+@SessionAttributes("docent")
 public class LoginController {
 
     @EJB
     private LoginService loginservice;
-
     private Docent docent;
 
     //login
     private String login;
     private String pass;
     private String error = "";
+
+    //test
+    @RequestMapping(method = GET)
+    public String get(Model model) {
+        if (!model.containsAttribute("docent")) {
+            model.addAttribute("docent", new Docent());
+        }
+        return "docent";
+    }
+
+    // Obtain 'mycounter' object for this user's session and increment it
+    @RequestMapping(method = POST)
+    public String post(@ModelAttribute("docent") Docent docent) {
+        
+        return "redirect:/counter";
+    }
 
     public String getLogin() {
         return login;
@@ -60,6 +77,7 @@ public class LoginController {
     public String dologin() {
         docent = getDocent(login, pass);
         if (docent != null) {
+
             return "home";
         } else {
             error = "Your username or password is not valid!";
