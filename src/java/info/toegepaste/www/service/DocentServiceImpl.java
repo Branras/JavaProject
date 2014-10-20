@@ -23,10 +23,10 @@ public class DocentServiceImpl implements DocentService{
     @PersistenceContext
     private EntityManager em;
     
-    @TransactionAttribute(REQUIRES_NEW)
     @Override
+    @TransactionAttribute(REQUIRES_NEW)
     public List<Docent> getAllDocenten() {
-        Query q = em.createQuery("SELECT * FROM Docent d");
+        Query q = em.createQuery("SELECT d FROM Docent d");
         return (List<Docent>) q.getResultList();          
     }
 }
