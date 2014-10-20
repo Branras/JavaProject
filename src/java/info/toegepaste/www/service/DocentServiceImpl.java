@@ -26,7 +26,7 @@ public class DocentServiceImpl implements DocentService{
     @Override
     @TransactionAttribute(REQUIRES_NEW)
     public List<Docent> getAllDocenten() {
-        Query q = em.createQuery("SELECT d FROM Docent d");
+        Query q = em.createQuery("SELECT d FROM Docent d ORDER BY d.familienaam ASC, d.naam ASC");
         return (List<Docent>) q.getResultList();          
     }
 }
