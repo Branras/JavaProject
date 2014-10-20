@@ -18,7 +18,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
  * @author brams
  */
 @ManagedBean(name = "loginController")
-@SessionAttributes("docent")
+@SessionAttributes("docentsession")
 public class LoginController {
 
     @EJB
@@ -33,15 +33,15 @@ public class LoginController {
     //test
     @RequestMapping(method = GET)
     public String get(Model model) {
-        if (!model.containsAttribute("docent")) {
-            model.addAttribute("docent", new Docent());
+        if (!model.containsAttribute("docentsession")) {
+            model.addAttribute("docentsession", new Docent());
         }
-        return "docent";
+        return "docentsession";
     }
 
     // Obtain 'mycounter' object for this user's session and increment it
     @RequestMapping(method = POST)
-    public String post(@ModelAttribute("docent") Docent docent) {
+    public String post(@ModelAttribute("docentsession") Docent docent) {
         
         return "redirect:/counter";
     }
@@ -78,10 +78,10 @@ public class LoginController {
         docent = getDocent(login, pass);
         if (docent != null) {
 
-            return "home";
+            return "redirect:/home";
         } else {
             error = "Your username or password is not valid!";
-            return "login";
+            return "redirect:/login";
         }
 
     }
