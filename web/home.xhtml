@@ -18,11 +18,11 @@
         <script src="js/skel-layers.min.js"></script>
         <script src="js/init.js"></script>      
         <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-        
+
         <script>
             var docentid = null;
-            docentid = " "  + '<h:outputText value="${sessionScope.docent.getId()}"/>';
-            if(docentid === " ")
+            docentid = " " + '<h:outputText value="${sessionScope.docent.getId()}"/>';
+            if (docentid === " ")
             {
                 alert("bye bye");
                 window.location = "index.xhtml";
@@ -38,16 +38,18 @@
 
             <!-- Nav -->
             <p></p>
-            <nav id="nav">
-                <ul>
-                    <li class="current"><a href="home.xhtml">Home</a></li>
-                    <li><a href="docenten.xhtml">Docenten</a></li>
-                    <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                    <li><a href="two-sidebar.html">Two Sidebar</a></li>
-                    <li><a href="no-sidebar.html">No Sidebar</a></li>
-                    <li><a href="#">Welkom <h:outputText value="${sessionScope.docent.getNaam()}"/></a><h:commandLink action="#{loginController.logOut()}">logout</h:commandLink></li>
-                </ul>
-            </nav>
+            <h:form>
+                <nav id="nav">
+                    <ul>
+                        <li class="current"><a href="home.xhtml">Home</a></li>
+                        <li><a href="docenten.xhtml">Docenten</a></li>
+                        <li><a href="right-sidebar.html">Right Sidebar</a></li>
+                        <li><a href="two-sidebar.html">Two Sidebar</a></li>
+                        <li><a href="no-sidebar.html">No Sidebar</a></li>
+                        <li><a href="#">Welkom <h:outputText value="${sessionScope.docent.getNaam()}"/></a><h:commandLink action="#{loginController.logOut()}">logout</h:commandLink></li>
+                    </ul>
+                </nav>
+            </h:form>
 
         </div>
 
