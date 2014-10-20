@@ -66,11 +66,11 @@ public class LoginController {
         if (docent != null) {
             FacesContext context = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-            session.setAttribute("docentid", docent.getId());
+            session.setAttribute("docent", docent);
             
-            String id = (String)session.getAttribute("docentid").toString();
+            //String id = (String)session.getAttribute("docentid").toString();
+            //error = id;
             
-            error = id;
             return "login";
         } else {
             error = "Your username or password is not valid!";
