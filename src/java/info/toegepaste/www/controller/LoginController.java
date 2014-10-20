@@ -78,5 +78,12 @@ public class LoginController {
         }
     }
     
-    
+    public String logOut()
+    {
+       FacesContext context = FacesContext.getCurrentInstance();
+       HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+       session.removeAttribute("docent");
+       
+       return "login";
+    }  
 }
