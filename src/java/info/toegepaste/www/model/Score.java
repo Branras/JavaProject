@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Score.findByScoreid", query = "SELECT s FROM Score s WHERE s.scoreid = :scoreid"),
     @NamedQuery(name = "Score.findByScore", query = "SELECT s FROM Score s WHERE s.score = :score"),
     @NamedQuery(name = "Score.findByMaxaantalpunten", query = "SELECT s FROM Score s WHERE s.maxaantalpunten = :maxaantalpunten")})
+    
 public class Score implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -106,6 +107,7 @@ public class Score implements Serializable {
     public void setTestid(Test testid) {
         this.testid = testid;
     }
+    
 
     @Override
     public int hashCode() {
