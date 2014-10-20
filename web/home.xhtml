@@ -18,6 +18,16 @@
         <script src="js/skel-layers.min.js"></script>
         <script src="js/init.js"></script>      
         <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+        
+        <script>
+            var docentid = null;
+            docentid = " "  + '<h:outputText value="${sessionScope.docent.getId()}"/>';
+            if(docentid === " ")
+            {
+                alert("bye bye");
+                window.location = "index.xhtml";
+            }
+        </script>
     </h:head>
     <h:body>
         <!-- Header -->
@@ -27,13 +37,15 @@
             <h1><a href="home.xhtml" id="logo">Score Tracker <em>by Team 2</em></a></h1>
 
             <!-- Nav -->
+            <p></p>
             <nav id="nav">
                 <ul>
-                    <li class="current"><a href="home.html">Home</a></li>
+                    <li class="current"><a href="home.xhtml">Home</a></li>
                     <li><a href="docenten.xhtml">Docenten</a></li>
                     <li><a href="right-sidebar.html">Right Sidebar</a></li>
                     <li><a href="two-sidebar.html">Two Sidebar</a></li>
                     <li><a href="no-sidebar.html">No Sidebar</a></li>
+                    <li><a href="#">Welkom <h:outputText value="${sessionScope.docent.getNaam()}"/></a></li>
                 </ul>
             </nav>
 

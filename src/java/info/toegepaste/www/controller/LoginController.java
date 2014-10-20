@@ -71,11 +71,12 @@ public class LoginController {
             //String id = (String)session.getAttribute("docentid").toString();
             //error = id;
             
-            return "login";
+            return "home";
         } else {
             error = "Your username or password is not valid!";
             return "login";
         }
-
     }
+    
+    
 }
