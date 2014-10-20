@@ -117,3 +117,7 @@ p {
 #login > p span {
 	padding-left: 5px;
 }
+
+#login_error{
+    color: red;
+}
