@@ -26,10 +26,15 @@ public class LoginServiceImpl implements LoginService{
     @Override
     @TransactionAttribute(REQUIRES_NEW)
     public Docent getLogin(String login, String pass) {
+        Docent docent = null;
+        try{
         Query q = em.createQuery("SELECT d FROM Docent d WHERE d.login=? AND d.pass=?");
         q.setParameter(1, login);
         q.setParameter(2, pass);
-        return (Docent) q.getSingleResult();
+        docent = (Docent) q.getSingleResult();
+        }catch(Exception e){}
+        
+        return docent;
     }
     
 }
