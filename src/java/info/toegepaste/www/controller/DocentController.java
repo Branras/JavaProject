@@ -41,4 +41,38 @@ public class DocentController {
     public void setDocenten(List<Docent> docenten) {
         this.docenten = docenten;
     }
+
+    public String getVoornaam() {
+        return voornaam;
+    }
+
+    public void setVoornaam(String voornaam) {
+        this.voornaam = voornaam;
+    }
+
+    public String getFamilienaam() {
+        return familienaam;
+    }
+
+    public void setFamilienaam(String familienaam) {
+        this.familienaam = familienaam;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+    
+    
 }

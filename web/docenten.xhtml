@@ -59,22 +59,22 @@
                             <h:form>
                                 <p>
                                     <label for="input_voornaam">Voornaam: </label>
-                                    <h:inputText id="input_voornaam" value="#{docentController.}"  pt:placeholder="Voornaam" required="true" onkeyup="changeLogin()"/>
+                                    <h:inputText id="input_voornaam" value="#{docentController.voornaam}"  pt:placeholder="Voornaam" required="true" onkeyup="changeLogin()"/>
                                 </p>
 
                                 <p>
                                     <label for="input_familienaam">Familienaam: </label>
-                                    <h:inputText id="input_familienaam"  pt:placeholder="Familienaam" required="true" onkeyup="changeLogin()"/>
+                                    <h:inputText id="input_familienaam" value="#{docentController.familienaam}"  pt:placeholder="Familienaam" required="true" onkeyup="changeLogin()"/>
                                 </p>
 
                                 <p>
                                     <label for="input_login">Login: </label>
-                                    <h:inputText id="input_login" required="true" disabled="true"/>
+                                    <h:inputText id="input_login" value="#{docentController.login}" required="true" disabled="true"/>
                                 </p>
 
                                 <p>
                                     <label for="input_pass">Wachtwoord: </label>
-                                    <h:inputText id="input_pass"  pt:placeholder="Pass" required="true"/>
+                                    <h:inputText id="input_pass" value="#{docentController.pass}"  pt:placeholder="Pass" required="true"/>
                                 </p>
 
                                 <p>
