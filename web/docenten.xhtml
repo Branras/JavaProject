@@ -46,20 +46,21 @@
             <div class="container">
                 <div id="content">
 
-                    <!-- Content -->
-
                     <article>
                         <header>
                             <h2>Docenten</h2>
-                            <p>Alle Docenten</p>
                         </header>
 
-                        <h:dataTable var="docent" value="#{docentController.docenten}">
-                            <h:column>
-                                <h:outputText value="#{docent.familienaam}" />&nbsp;<h:outputText value="#{docent.naam}" />
-                            </h:column>
-                        </h:dataTable>
-
+                        <article>
+                            <header>
+                                <p>Alle Docenten</p>
+                            </header>
+                            <h:dataTable var="docent" value="#{docentController.docenten}">
+                                <h:column>
+                                    <h:outputText value="#{docent.familienaam}" />&nbsp;<h:outputText value="#{docent.naam}" />
+                                </h:column>
+                            </h:dataTable>
+                        </article>
                     </article>
 
                 </div>
