@@ -20,6 +20,12 @@ import javax.faces.bean.ManagedBean;
 public class DocentController {
     private List<Docent> docenten;
     
+    //toevoegen van docent
+    private String voornaam;
+    private String familienaam;
+    private String login;
+    private String pass;
+    
     @EJB
     private DocentService docentService;
     

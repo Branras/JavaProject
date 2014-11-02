@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
 
         <link rel="stylesheet" type="text/css" href="css/skel.css" />
@@ -53,6 +54,47 @@
 
                         <article>
                             <header>
+                                <p>Voeg docenten toe</p>
+                            </header>
+                            <h:form>
+                                <p>
+                                    <label for="input_voornaam">Voornaam: </label>
+                                    <h:inputText id="input_voornaam" value="#{docentController.}"  pt:placeholder="Voornaam" required="true" onkeyup="changeLogin()"/>
+                                </p>
+
+                                <p>
+                                    <label for="input_familienaam">Familienaam: </label>
+                                    <h:inputText id="input_familienaam"  pt:placeholder="Familienaam" required="true" onkeyup="changeLogin()"/>
+                                </p>
+
+                                <p>
+                                    <label for="input_login">Login: </label>
+                                    <h:inputText id="input_login" required="true" disabled="true"/>
+                                </p>
+
+                                <p>
+                                    <label for="input_pass">Wachtwoord: </label>
+                                    <h:inputText id="input_pass"  pt:placeholder="Pass" required="true"/>
+                                </p>
+
+                                <p>
+                                    <h:commandButton value="Voeg toe" />
+                                </p>
+                            </h:form>
+
+                            <script>
+                                function changeLogin()
+                                {
+                                    var voornaam = document.getElementById("j_idt6:input_voornaam").value;
+                                    var familienaam = document.getElementById("j_idt6:input_familienaam").value;
+                                    var element = document.getElementById("j_idt6:input_login");
+                                    element.value = familienaam + voornaam;
+                                }
+                            </script>
+                        </article>
+
+                        <article>
+                            <header>
                                 <p>Alle Docenten</p>
                             </header>
                             <h:dataTable var="docent" value="#{docentController.docenten}">
@@ -69,77 +111,12 @@
 
         <!-- Footer -->
         <div id="footer">
-            <div class="container">
-                <div class="row ">
-                    <div class="6u">
-                        <div class="row collapse-at-2">
-                            <section class="6u">
-                                <h3>Links to Stuff</h3>
-                                <ul class="links">
-                                    <li><a href="#">Mattis et quis rutrum</a></li>
-                                    <li><a href="#">Suspendisse amet varius</a></li>
-                                    <li><a href="#">Sed et dapibus quis</a></li>
-                                    <li><a href="#">Rutrum accumsan dolor</a></li>
-                                    <li><a href="#">Mattis rutrum accumsan</a></li>
-                                    <li><a href="#">Suspendisse varius nibh</a></li>
-                                    <li><a href="#">Sed et dapibus mattis</a></li>
-                                </ul>
-                            </section>
-                            <section class="6u">
-                                <h3>More Links to Stuff</h3>
-                                <ul class="links">
-                                    <li><a href="#">Duis neque nisi dapibus</a></li>
-                                    <li><a href="#">Sed et dapibus quis</a></li>
-                                    <li><a href="#">Rutrum accumsan sed</a></li>
-                                    <li><a href="#">Mattis et sed accumsan</a></li>
-                                    <li><a href="#">Duis neque nisi sed</a></li>
-                                    <li><a href="#">Sed et dapibus quis</a></li>
-                                    <li><a href="#">Rutrum amet varius</a></li>
-                                </ul>
-                            </section>
-                        </div>
-                    </div>
-                    <section class="6u">
-                        <h3>Get In Touch</h3>
-                        <form>
-                            <div class="row half collapse-at-2">
-                                <div class="6u">
-                                    <input type="text" name="name" id="name" placeholder="Name" />
-                                </div>
-                                <div class="6u">
-                                    <input type="email" name="email" id="email" placeholder="Email" />
-                                </div>
-                            </div>
-                            <div class="row half">
-                                <div class="12u">
-                                    <textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
-                                </div>
-                            </div>
-                            <div class="row half">
-                                <div class="12u">
-                                    <ul class="actions">
-                                        <li><input type="submit" class="button alt" value="Send Message" /></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
-                    </section>
-                </div>
-            </div>
 
-            <!-- Icons -->
-            <ul class="icons">
-                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-                <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-            </ul>
 
             <!-- Copyright -->
             <div class="copyright">
                 <ul class="menu">
-                    <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    <li>&copy; Score Tracker. All rights reserved: Team 2</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
                 </ul>
             </div>
 
