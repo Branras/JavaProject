@@ -74,5 +74,11 @@ public class DocentController {
         this.pass = pass;
     }
     
-    
+    public String insertDocent()
+    {
+        //TODO
+        docentService.insertDocent(familienaam,voornaam, login, pass);
+        return "docenten";
+        
+    }
 }

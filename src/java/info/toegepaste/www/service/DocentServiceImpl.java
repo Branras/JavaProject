@@ -29,4 +29,16 @@ public class DocentServiceImpl implements DocentService{
         Query q = em.createQuery("SELECT d FROM Docent d ORDER BY d.familienaam ASC, d.naam ASC");
         return (List<Docent>) q.getResultList();          
     }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public void insertDocent(String familienaam, String voornaam, String login, String pass)
+    {
+        Query q = em.createQuery("INSERT INTO Docent VALUES (?,?,?,?)");
+        q.setParameter(1, familienaam);
+        q.setParameter(2, login);
+        q.setParameter(3, voornaam);
+        q.setParameter(4, pass);
+        q.executeUpdate();
+    }
 }

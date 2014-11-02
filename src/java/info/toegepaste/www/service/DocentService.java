@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface DocentService {
     public List<Docent> getAllDocenten();
+    public void insertDocent(String familienaam , String voornaam, String login, String pass);
 }
