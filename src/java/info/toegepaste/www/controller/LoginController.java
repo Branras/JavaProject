@@ -71,7 +71,7 @@ public class LoginController {
             return "home";
         } else {
             error = "Your username or password is not valid!";
-            return "login";
+            return "index";
         }
     }
     
