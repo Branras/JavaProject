@@ -68,9 +68,6 @@ public class LoginController {
             HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
             session.setAttribute("docent", docent);
             
-            //String id = (String)session.getAttribute("docentid").toString();
-            //error = id;
-            
             return "home";
         } else {
             error = "Your username or password is not valid!";
