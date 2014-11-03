@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -34,6 +35,7 @@ public class DocentServiceImpl implements DocentService{
     @TransactionAttribute(REQUIRES_NEW)
     public void insertDocent(String familienaam, String voornaam, String login, String pass)
     {
+        
         /*try{
         Query q = em.createQuery("INSERT INTO Docent (Familienaam, Login, Voornaam, Pass) VALUES (?,?,?,?)");
         q.setParameter(1, familienaam);
@@ -43,15 +45,19 @@ public class DocentServiceImpl implements DocentService{
         q.executeUpdate();
         }catch(Exception e){}*/
         
-        Docent docent = new Docent();
+        EntityTransaction et = em.getTransaction();
+        
+        /*Docent docent = new Docent();
         docent.setFamilienaam(familienaam);
         docent.setNaam(voornaam);
         docent.setLogin(login);
-        docent.setPass(pass);
+        docent.setPass(pass);*/
         
-        em.getTransaction().begin();
-        em.persist(docent);
-        em.getTransaction().commit();
-        em.close();
+        String query = "INSERT INTO Docent (Familienaam, Login, Voornaam, Pass) VALUES (?,?,?,?)";
+        
+        et.begin();
+        em.createNativeQuery(query).setParameter(1, familienaam).setParameter(2, login).setParameter(3, voornaam).setParameter(4,pass).executeUpdate();
+        et.commit();
+        //em.close();
     }
 }
