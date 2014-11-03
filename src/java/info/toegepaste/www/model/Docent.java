@@ -24,16 +24,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Tim
  */
 @Entity
-@Table(name = "docent")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Docent.findAll", query = "SELECT d FROM Docent d"),
-    @NamedQuery(name = "Docent.findById", query = "SELECT d FROM Docent d WHERE d.id = :id"),
-    @NamedQuery(name = "Docent.findByNaam", query = "SELECT d FROM Docent d WHERE d.naam = :naam"),
-    @NamedQuery(name = "Docent.findByFamilienaam", query = "SELECT d FROM Docent d WHERE d.familienaam = :familienaam"),
-    @NamedQuery(name = "Docent.findByLogin", query = "SELECT d FROM Docent d WHERE d.login = :login"),
-    @NamedQuery(name = "Docent.findByPass", query = "SELECT d FROM Docent d WHERE d.pass = :pass")})
+        @Table(name = "docent")
+        @XmlRootElement
+        @NamedQueries({
+            @NamedQuery(name = "Docent.findAll", query = "SELECT d FROM Docent d"),
+            @NamedQuery(name = "Docent.findById", query = "SELECT d FROM Docent d WHERE d.id = :id"),
+            @NamedQuery(name = "Docent.findByNaam", query = "SELECT d FROM Docent d WHERE d.naam = :naam"),
+            @NamedQuery(name = "Docent.findByFamilienaam", query = "SELECT d FROM Docent d WHERE d.familienaam = :familienaam"),
+            @NamedQuery(name = "Docent.findByLogin", query = "SELECT d FROM Docent d WHERE d.login = :login"),
+            @NamedQuery(name = "Docent.findByPass", query = "SELECT d FROM Docent d WHERE d.pass = :pass"),
+            @NamedQuery(name = "Docent.login", query = "SELECT d FROM Docent d WHERE d.pass = :pass AND d.login = :login") })
+
 public class Docent implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -140,5 +143,5 @@ public class Docent implements Serializable {
     public String toString() {
         return "info.toegepaste.model.Docent[ id=" + id + " ]";
     }
-    
+
 }
