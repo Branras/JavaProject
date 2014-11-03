@@ -25,4 +25,7 @@ public class ExcelController {
         return excelservice.printExcel() ;
     } 
 
+    public void upload(){
+        excelservice.upload();
+    }
 }
