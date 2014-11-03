@@ -21,7 +21,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
  *
  * @author brams
  */
-@ManagedBean(name = "loginController")
+@ManagedBean(name = "LoginController")
 public class LoginController {
 
     @EJB
