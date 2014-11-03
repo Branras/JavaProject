@@ -36,8 +36,8 @@ import org.springframework.web.portlet.bind.annotation.ActionMapping;
  * @author bens
  */
 @Stateless
-//public class PdfServiceImpl implements PdfService {
-//    
+public class PdfServiceImpl implements PdfService {
+    
 //    protected void postPdf(HttpServletRequest request, HttpServletResponse response)
 //        throws ServletException, IOException {
 //        response.setContentType("application/pdf");
@@ -61,8 +61,8 @@ import org.springframework.web.portlet.bind.annotation.ActionMapping;
 //            e.printStackTrace();
 //        }
 //    }   
-//            
-//    }
+            
+    }
 
 
 
