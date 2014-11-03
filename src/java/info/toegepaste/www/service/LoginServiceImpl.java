@@ -28,7 +28,7 @@ public class LoginServiceImpl implements LoginService{
     public Docent getLogin(String login, String pass) {
         Docent docent = null;
         try{
-        Query q = em.createQuery("SELECT d FROM Docent d WHERE d.login=? AND d.pass=?");
+        Query q = em.createQuery("SELECT d FROM Docent d WHERE d.Login=? AND d.Pass=?");
         q.setParameter(1, login);
         q.setParameter(2, pass);
         docent = (Docent) q.getSingleResult();
