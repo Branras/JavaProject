@@ -35,7 +35,6 @@ public class DocentServiceImpl implements DocentService{
     @TransactionAttribute(REQUIRES_NEW)
     public void insertDocent(String familienaam, String voornaam, String login, String pass)
     {
-        
         try{
         Query q = em.createNativeQuery("INSERT INTO docent (Familienaam, Login, Naam, Pass) VALUES (?,?,?,?)");
         q.setParameter(1, familienaam);
