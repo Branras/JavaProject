@@ -14,19 +14,19 @@
                 <fieldset class="clearfix">
                     <p>
                         <span class="fontawesome-user"></span>
-                        <h:inputText id="input_login" value="#{loginController.login}"  pt:placeholder="login" class="" required="true"/>
+                        <h:inputText id="input_login" value="#{LoginController.login}"  pt:placeholder="login" class="" required="true"/>
                     </p>
                     
                     <p>
                         <span class="fontawesome-lock"></span>
-                        <h:inputSecret id="input_pass" value="#{loginController.pass}" pt:placeholder="password" class="" required="true"/>
+                        <h:inputSecret id="input_pass" value="#{LoginController.pass}" pt:placeholder="password" class="" required="true"/>
                     </p>
 
-                    <p><h:commandButton value="Sign In" action="#{loginController.DoLogin()}"/></p>
+                    <p><h:commandButton value="Sign In" action="#{LoginController.DoLogin()}"/></p>
                 </fieldset>
             </h:form>
             
-            <p id="login_error"><h:outputText value="#{loginController.error}"/></p>
+            <p id="login_error"><h:outputText value="#{LoginController.error}"/></p>
             <p><h:outputText value="${sessionScope.docent.getNaam()} "/></p>
             <!--<p>Not a member? <a href="#">Sign up now</a><span class="fontawesome-arrow-right"></span></p>-->
         </div>
