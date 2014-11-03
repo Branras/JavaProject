@@ -21,6 +21,20 @@
         <script src="js/init.js"></script>
 
         <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+        
+        <script>
+            //DIT TOEVOEGEN OP IEDERE PAGINA
+            //MUCH SECURITY
+            //VERY AWESOME
+            //NICE CODE
+            var docentid = null;
+            docentid = " " + '<h:outputText value="${sessionScope.docent.getId()}"/>';
+            if (docentid === " ")
+            {
+                //alert("bye bye");
+                window.location = "index.xhtml";
+            }
+        </script>
     </h:head>
     <h:body>
         <!-- Header -->
@@ -30,15 +44,18 @@
             <!--<h1><a href="index.html" id="logo">Score Tracker <em>by Team 2</em></em></a></h1-->
 
             <!-- Nav -->
-            <nav id="nav">
-                <ul>
-                    <li><a href="home.xhtml">Home</a></li>
-                    <li class="current"><a href="docenten.xhtml">Docenten</a></li>
-                    <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                    <li><a href="two-sidebar.html">Two Sidebar</a></li>
-                    <li><a href="no-sidebar.html">No Sidebar</a></li>
-                </ul>
-            </nav>
+            <h:form>
+                <nav id="nav">
+                    <ul>
+                        <li class="current"><a href="home.xhtml">Home</a></li>
+                        <li><a href="docenten.xhtml">Docenten</a></li>
+                        <li><a href="resultaten.xhtml">Resultaten</a></li>
+                        <li><a href="studenten.xhtml">Studenten</a></li>
+                        <li><a href="#">Welkom <strong><h:outputText value="${sessionScope.docent.getNaam()}"/></strong></a></li>
+                        <li><h:commandLink action="#{loginController.logOut()}">logout</h:commandLink></li>
+                    </ul>
+                </nav>
+            </h:form>
 
         </div>
 
