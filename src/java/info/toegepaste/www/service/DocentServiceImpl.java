@@ -45,8 +45,6 @@ public class DocentServiceImpl implements DocentService{
         q.executeUpdate();
         }catch(Exception e){}*/
         
-        EntityTransaction et = em.getTransaction();
-        
         /*Docent docent = new Docent();
         docent.setFamilienaam(familienaam);
         docent.setNaam(voornaam);
@@ -54,10 +52,6 @@ public class DocentServiceImpl implements DocentService{
         docent.setPass(pass);*/
         
         String query = "INSERT INTO Docent (Familienaam, Login, Voornaam, Pass) VALUES (?,?,?,?)";
-        
-        et.begin();
         em.createNativeQuery(query).setParameter(1, familienaam).setParameter(2, login).setParameter(3, voornaam).setParameter(4,pass).executeUpdate();
-        et.commit();
-        //em.close();
     }
 }
