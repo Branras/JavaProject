@@ -37,7 +37,30 @@ import org.springframework.web.portlet.bind.annotation.ActionMapping;
 @Stateless
 public class PdfServiceImpl implements PdfService {
     
-    
+    protected void postpdf(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        response.setContentType("application/pdf");
+        Document document = new Document();
+        try{
+        PdfWriter.getInstance(document, response.getOutputStream());
+            document.open();
+            document.add(new Paragraph("Gello Pdf"));
+            PdfPTable table = new PdfPTable(2);
+            table.addCell("One");
+            table.addCell("Two");
+            table.addCell("Three");
+            table.addCell("Four");
+            table.addCell("Five");
+            table.addCell("Six");
+            
+            document.add(table);
+            document.close();
+          }
+        catch (DocumentException e){
+            e.printStackTrace();
+        }
+    }   
+            
     }
 
 
