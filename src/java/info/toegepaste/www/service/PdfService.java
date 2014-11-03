@@ -7,10 +7,11 @@ package info.toegepaste.www.service;
 
 
 
+
 /**
  *
- * @author Mathias
+ * @author bens
  */
 public interface PdfService {
-
+    public void postPdf();
 }
