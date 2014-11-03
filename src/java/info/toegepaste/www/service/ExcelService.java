@@ -5,10 +5,15 @@
  */
 package info.toegepaste.www.service;
 
+import javax.servlet.http.Part;
+
 /**
  *
  * @author Mathias
  */
 public interface ExcelService {
     public String printExcel();
+    public void upload();
+    public Part getFile();
+    public void setFile(Part file);
 }
