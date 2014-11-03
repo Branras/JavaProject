@@ -61,7 +61,7 @@ public class LoginController {
         return loginservice.getLogin(login, pass);
     }
 
-    public String dologin() {
+    public String DoLogin() {
         docent = getDocent(login, pass);
         if (docent != null) {
             FacesContext context = FacesContext.getCurrentInstance();
