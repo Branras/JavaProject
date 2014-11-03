@@ -13,5 +13,5 @@ package info.toegepaste.www.service;
  * @author bens
  */
 public interface PdfService {
-    public void postPdf();
+    public void postpdf();
 }
