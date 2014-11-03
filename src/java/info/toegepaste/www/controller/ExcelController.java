@@ -23,6 +23,6 @@ public class ExcelController {
 
     public String printExcel() {
         return excelservice.printExcel() ;
-    }
+    } 
 
 }
