@@ -108,7 +108,7 @@
                             </header>
                             <h:dataTable var="student" value="#{studentController.studenten}">
                                 <h:column>
-                                    <h:outputText value="#{student.familienaam}" />&nbsp;<h:outputText value="#{student.voornaam}" />
+                                    <h:outputText value="#{student.familienaam}" />&nbsp;<h:outputText value="#{student.voornaam}" />&nbsp;<h:outputText value="#{student.klasid.naam}"/>
                                 </h:column>
                             </h:dataTable>
                         </article>
