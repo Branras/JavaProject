@@ -78,15 +78,15 @@
                                 </p>
 
                                 <p>
-                                    <h:commandButton value="Voeg toe" />
+                                    <h:commandButton action="#{docentController.insertDocent()}" value="Voeg toe" />
                                 </p>
                             </h:form>
 
                             <script>
                                 function changeLogin()
                                 {
-                                    var voornaam = document.getElementById("j_idt6:input_voornaam").value;
-                                    var familienaam = document.getElementById("j_idt6:input_familienaam").value;
+                                    var voornaam = document.getElementById("j_idt6:input_voornaam").value.toLowerCase().trim();
+                                    var familienaam = document.getElementById("j_idt6:input_familienaam").value.toLowerCase().trim();
                                     var element = document.getElementById("j_idt6:input_login");
                                     element.value = familienaam + voornaam;
                                 }

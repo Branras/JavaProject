@@ -34,11 +34,14 @@ public class DocentServiceImpl implements DocentService{
     @TransactionAttribute(REQUIRES_NEW)
     public void insertDocent(String familienaam, String voornaam, String login, String pass)
     {
-        Query q = em.createQuery("INSERT INTO Docent VALUES (?,?,?,?)");
+        try{
+        Query q = em.createQuery("INSERT INTO Docent (Familienaam, Login, Voornaam, Pass) VALUES (?,?,?,?)");
         q.setParameter(1, familienaam);
         q.setParameter(2, login);
         q.setParameter(3, voornaam);
         q.setParameter(4, pass);
         q.executeUpdate();
+        }catch(Exception e){}
+        
     }
 }
