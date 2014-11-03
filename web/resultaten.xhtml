@@ -73,7 +73,10 @@
 
                         <article>
                             <header>
-                                <p>Voeg resultaten toe</p>
+                                        <p>Voeg resultaten toe: <h:form>
+                                                <h:inputFile id="excel" value="#{bean.file}"/>
+                                                <h:commandButton value="UPLOAD" action="#{bean.upload}"/>
+                                    </h:form></p>
                             </header>
                             <h:form>
                                 <p>
