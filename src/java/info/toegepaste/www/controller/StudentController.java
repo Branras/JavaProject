@@ -27,12 +27,12 @@ public class StudentController {
     public void init() {
         studenten = studentservice.getAllStudenten();
     }
-    
-    public List<Student> getDocenten() {
+
+    public List<Student> getStudenten() {
         return studenten;
     }
 
-    public void setDocenten(List<Student> studenten) {
+    public void setStudenten(List<Student> studenten) {
         this.studenten = studenten;
     }
 }
