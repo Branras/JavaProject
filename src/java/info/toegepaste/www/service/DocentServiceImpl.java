@@ -51,7 +51,7 @@ public class DocentServiceImpl implements DocentService{
         docent.setLogin(login);
         docent.setPass(pass);*/
         
-        String query = "INSERT INTO docent (Familienaam, Login, Voornaam, Pass) VALUES (?,?,?,?)";
+        String query = "INSERT INTO docent (Familienaam, Login, Naam, Pass) VALUES (?,?,?,?)";
         em.createNativeQuery(query).setParameter(1, familienaam).setParameter(2, login).setParameter(3, voornaam).setParameter(4,pass).executeUpdate();
     }
 }
