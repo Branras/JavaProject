@@ -37,7 +37,6 @@ public class DocentServiceImpl implements DocentService{
     {
         
         try{
-        //String query = "INSERT INTO docent (Familienaam, Login, Naam, Pass) VALUES (?,?,?,?)";
         Query q = em.createNativeQuery("INSERT INTO docent (Familienaam, Login, Naam, Pass) VALUES (?,?,?,?)");
         q.setParameter(1, familienaam);
         q.setParameter(2, login);
@@ -45,12 +44,6 @@ public class DocentServiceImpl implements DocentService{
         q.setParameter(4, pass);
         q.executeUpdate();
         }catch(Exception e){}
-        
-        /*Docent docent = new Docent();
-        docent.setFamilienaam(familienaam);
-        docent.setNaam(voornaam);
-        docent.setLogin(login);
-        docent.setPass(pass);*/
         
         //String query = "INSERT INTO docent (Familienaam, Login, Naam, Pass) VALUES (?,?,?,?)";
         //em.createNativeQuery(query).setParameter(1, familienaam).setParameter(2, login).setParameter(3, voornaam).setParameter(4,pass).executeUpdate();
