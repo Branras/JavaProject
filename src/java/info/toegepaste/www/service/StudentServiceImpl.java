@@ -27,7 +27,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     @TransactionAttribute(REQUIRES_NEW)
     public List<Student> getAllStudenten() {
-        Query q = em.createQuery("SELECT s.*,k.naam as klasnaam FROM student s JOIN klas k ON s.klasid = k.klasid ORDER BY s.familienaam ASC, s.voornaam ASC");
+        Query q = em.createQuery("SELECT s.*,k.naam FROM student s JOIN klas k ON s.klasid = k.klasid ORDER BY s.familienaam ASC, s.voornaam ASC");
         return (List<Student>) q.getResultList();          
     }
 }
