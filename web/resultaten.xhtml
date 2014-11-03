@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/style-wide.css" />
 
-        <title>Score Tracker | Docenten</title>
+        <title>Score Tracker | Resultaten</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -50,8 +50,8 @@
                 <nav id="nav">
                     <ul>
                         <li><a href="home.xhtml">Home</a></li>
-                        <li class="current"><a href="docenten.xhtml">Docenten</a></li>
-                        <li><a href="resultaten.xhtml">Resultaten</a></li>
+                        <li><a href="docenten.xhtml">Docenten</a></li>
+                        <li class="current"><a href="resultaten.xhtml">Resultaten</a></li>
                         <li><a href="studenten.xhtml">Studenten</a></li>
                         <li><a href="#">Welkom <strong><h:outputText value="${sessionScope.docent.getNaam()}"/></strong></a></li>
                         <li><h:commandLink action="#{loginController.logOut()}">logout</h:commandLink></li>
@@ -68,59 +68,30 @@
 
                     <article>
                         <header>
-                            <h2>Docenten</h2>
+                            <h2>Resultaten</h2>
                         </header>
 
                         <article>
                             <header>
-                                <p>Voeg docenten toe</p>
+                                <p>Voeg resultaten toe</p>
                             </header>
                             <h:form>
                                 <p>
-                                    <label for="input_voornaam">Voornaam: </label>
-                                    <h:inputText id="input_voornaam" value="#{docentController.voornaam}"  pt:placeholder="Voornaam" required="true" onkeyup="changeLogin()"/>
-                                </p>
-
-                                <p>
-                                    <label for="input_familienaam">Familienaam: </label>
-                                    <h:inputText id="input_familienaam" value="#{docentController.familienaam}"  pt:placeholder="Familienaam" required="true" onkeyup="changeLogin()"/>
-                                </p>
-
-                                <p>
-                                    <label for="input_login">Login (auto generated): </label>
-                                    <h:inputText id="input_login" value="#{docentController.login}" required="true"/>
-                                </p>
-
-                                <p>
-                                    <label for="input_pass">Wachtwoord: </label>
-                                    <h:inputText id="input_pass" value="#{docentController.pass}"  pt:placeholder="Pass" required="true"/>
-                                </p>
-
-                                <p>
-                                    <h:commandButton action="#{docentController.insertDocent()}" value="Voeg toe" />
+                                    TODO
                                 </p>
                             </h:form>
-
-                            <script>
-                                function changeLogin()
-                                {
-                                    var voornaam = document.getElementById("j_idt6:input_voornaam").value.toLowerCase().trim();
-                                    var familienaam = document.getElementById("j_idt6:input_familienaam").value.toLowerCase().trim();
-                                    var element = document.getElementById("j_idt6:input_login");
-                                    element.value = familienaam + voornaam;
-                                }
-                            </script>
                         </article>
 
                         <article>
                             <header>
-                                <p>Alle Docenten</p>
+                                <p>Alle Resultaten</p>
                             </header>
-                            <h:dataTable var="docent" value="#{docentController.docenten}">
+                            <p>TODO</p>
+                            <!--<h:dataTable var="docent" value="#{docentController.docenten}">
                                 <h:column>
                                     <h:outputText value="#{docent.familienaam}" />&nbsp;<h:outputText value="#{docent.naam}" />
                                 </h:column>
-                            </h:dataTable>
+                            </h:dataTable>-->
                         </article>
                     </article>
 
