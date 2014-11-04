@@ -73,8 +73,14 @@
 
                         <article>
                             <header>
-                                        <p>Voeg resultaten toe: <h:form>
+                                <p>Voeg resultaten toe:
+                                    
+                                    <h:form>
+                                        <h:button value="Test" onclick="#{ExcelController.upload}"></h:button>
+                                    </h:form>
+                                            <h:form>
                                                 <h:inputFile id="excel" value="#{ExcelController.file}"/>
+                                                
                                                 <h:commandButton value="UPLOAD" action="#{ExcelController.upload}"/>
                                     </h:form></p>
                             </header>
