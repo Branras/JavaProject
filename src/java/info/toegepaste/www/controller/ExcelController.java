@@ -16,16 +16,30 @@ import javax.servlet.http.Part;
  *
  * @author brams
  */
-@ManagedBean(name="excelController")
+@ManagedBean(name="ExcelController")
 public class ExcelController {
     @EJB
     private ExcelService excelservice;
+    public Part file;
+    public String fileContent;
     
     public void upload() {
-    excelservice.upload();
+    try {
+      fileContent = new Scanner(file.getInputStream())
+          .useDelimiter("\\A").next();
+    } catch (IOException e) {
+      // Error handling
+    }
   }
  
     public void createExcel(){
         excelservice.createExcel();
     }
+    public Part getFile() {
+    return file;
+  }
+ 
+  public void setFile(Part file) {
+    this.file = file;
+  }
 }
