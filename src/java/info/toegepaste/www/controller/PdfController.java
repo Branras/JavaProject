@@ -11,6 +11,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import info.toegepaste.www.model.Docent;
 import info.toegepaste.www.service.DocentService;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -24,11 +25,11 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean(name="pdfController")
 public class PdfController {
+    File desktop = new File(System.getProperty("user.home"), "Desktop");
     public static final String RESULT
-            = "D://hello.pdf";
+            = "C://Test.pdf";
 
     public static void Write() throws DocumentException, IOException {
-
         new PdfController().createPdf(RESULT);
     }
 
