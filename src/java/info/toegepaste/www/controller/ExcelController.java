@@ -5,10 +5,12 @@
  */
 package info.toegepaste.www.controller;
 
-import info.toegepaste.www.model.*;
 import info.toegepaste.www.service.*;
+import java.io.IOException;
+import java.util.Scanner;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -19,15 +21,26 @@ public class ExcelController {
     @EJB
     private ExcelService excelservice;
     
+    private Part file;
+  private String fileContent;
     
 
-    public String printExcel() {
-        return excelservice.printExcel() ;
-    } 
-
-    public void upload(){
-        excelservice.upload();
+    public void upload() {
+    try {
+      fileContent = new Scanner(file.getInputStream())
+          .useDelimiter("\\A").next();
+    } catch (IOException e) {
+      // Error handling
     }
+  }
+ 
+  public Part getFile() {
+    return file;
+  }
+ 
+  public void setFile(Part file) {
+    this.file = file;
+  }
     public void createExcel(){
         excelservice.createExcel();
     }
