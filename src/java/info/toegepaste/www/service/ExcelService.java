@@ -16,4 +16,5 @@ public interface ExcelService {
     public void upload();
     public Part getFile();
     public void setFile(Part file);
+    public void createExcel();
 }

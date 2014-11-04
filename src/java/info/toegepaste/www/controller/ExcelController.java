@@ -26,6 +26,6 @@ public class ExcelController {
     } 
 
     public void upload(){
-        excelservice.upload();
+        excelservice.createExcel();
     }
 }
