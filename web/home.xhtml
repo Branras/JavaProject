@@ -51,7 +51,7 @@
                         <li><a href="studenten.xhtml">Studenten</a></li>
                         <li><a href="#">Welkom <strong><h:outputText value="${sessionScope.docent.getNaam()}"/></strong></a></li>
                         <li><h:commandLink action="#{loginController.logOut()}">logout</h:commandLink></li>
-                        <li><h:commandButton action="#{inputBean.Write}" value="PDF"/></li>
+                        <li><h:commandButton action="#{PdfController.Write}" value="PDF"/></li>
                     </ul>
                 </nav>
             </h:form>
