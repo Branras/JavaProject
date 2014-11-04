@@ -21,26 +21,10 @@ public class ExcelController {
     @EJB
     private ExcelService excelservice;
     
-    private Part file;
-  private String fileContent;
-    
-
     public void upload() {
-    try {
-      fileContent = new Scanner(file.getInputStream())
-          .useDelimiter("\\A").next();
-    } catch (IOException e) {
-      // Error handling
-    }
+    excelservice.upload();
   }
  
-  public Part getFile() {
-    return file;
-  }
- 
-  public void setFile(Part file) {
-    this.file = file;
-  }
     public void createExcel(){
         excelservice.createExcel();
     }
