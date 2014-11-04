@@ -22,7 +22,7 @@ import javax.faces.bean.ManagedBean;
  *
  * @author brams
  */
-@ManagedBean(name="docentController")
+@ManagedBean(name="pdfController")
 public class PdfController {
     public static final String RESULT
             = "D://hello.pdf";
