@@ -27,7 +27,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     @TransactionAttribute(REQUIRES_NEW)
     public List<Student> getAllStudenten() {
-        Query q = em.createNamedQuery("Student.findAllMetKlas");
+        Query q = em.createNamedQuery("Student.findAll");
         return (List<Student>) q.getResultList();          
     }
 }
