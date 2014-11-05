@@ -6,10 +6,8 @@
 package info.toegepaste.www.controller;
 
 import info.toegepaste.www.service.*;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.Scanner;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.servlet.http.Part;
@@ -44,7 +42,7 @@ public class ExcelController {
             while (rowIterator.hasNext())
             {
                 Row row = rowIterator.next();
-                //For each row, iterate through all the columns
+                //Leest elke horizontale lijn van links naar rechts uit in de console
                 Iterator<Cell> cellIterator = row.cellIterator();
                  
                 while (cellIterator.hasNext())
