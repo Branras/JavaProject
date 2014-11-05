@@ -8,11 +8,15 @@ package info.toegepaste.www.controller;
 import info.toegepaste.www.service.*;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.servlet.http.Part;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 
 /**
  *
@@ -29,9 +33,37 @@ public class ExcelController {
     
     public void upload() {
     try {
-      fileContent = new Scanner(file.getInputStream())
-          .useDelimiter("\\A").next();
+//      fileContent = new Scanner(file.getInputStream())
+//          .useDelimiter("\\A").next();
+        //lees de content stream in naar de hssfworkbook
       workbook = new HSSFWorkbook(file.getInputStream());
+      //kies de juiste pagina (eerste)
+      HSSFSheet sheet = workbook.getSheetAt(0);
+      
+      Iterator<Row> rowIterator = sheet.iterator();
+            while (rowIterator.hasNext())
+            {
+                Row row = rowIterator.next();
+                //For each row, iterate through all the columns
+                Iterator<Cell> cellIterator = row.cellIterator();
+                 
+                while (cellIterator.hasNext())
+                {
+                    Cell cell = cellIterator.next();
+                    //Check the cell type and format accordingly
+                    switch (cell.getCellType())
+                    {
+                        case Cell.CELL_TYPE_NUMERIC:
+                            System.out.print(cell.getNumericCellValue());
+                            break;
+                        case Cell.CELL_TYPE_STRING:
+                            System.out.print(cell.getStringCellValue());
+                            break;
+                    }
+                }
+                System.out.println("");
+            }
+
       test = "2";
     } catch (IOException e) {
       // Error handling
