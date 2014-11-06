@@ -30,7 +30,7 @@ public class PdfController {
             = "C://Test.pdf";
 
     public static void Write() throws DocumentException, IOException {
-        new PdfController().createPdf(RESULT);
+        new PdfController().createPdf("C://TET.pdf");
     }
 
     public void createPdf(String filename)
