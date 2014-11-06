@@ -10,7 +10,9 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import info.toegepaste.www.model.Docent;
+import info.toegepaste.www.model.Student;
 import info.toegepaste.www.service.DocentService;
+import info.toegepaste.www.service.StudentService;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,9 +32,24 @@ public class PdfController {
             = "C://Test.pdf";
 
     public static void Write() throws DocumentException, IOException {
-        new PdfController().createPdf("C://TET.pdf");
+        
+        new PdfController().createPdf(RESULT);
     }
 
+    private List<Student> studenten;
+    
+    @EJB
+    private StudentService studentservice;
+    
+    @PostConstruct
+    public void init() {
+        studenten = studentservice.getAllStudenten();
+    }
+    
+    public List<Student> getStudenten() {
+        return studenten;
+    }
+    
     public void createPdf(String filename)
             throws DocumentException, IOException {
         // step 1
@@ -42,7 +59,11 @@ public class PdfController {
         // step 3
         document.open();
         // step 4
-        document.add(new Paragraph("Hello World!"));
+        for (Student student : studenten ) {
+            document.add(new Paragraph(student.toString()));
+        }
+        
+//        document.add(new Paragraph("Hello World!"));
         // step 5
         document.close();
     }
