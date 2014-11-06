@@ -10,6 +10,11 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Scanner;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.http.Part;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -24,72 +29,20 @@ import org.apache.poi.ss.usermodel.Row;
  */
 @Stateless
 public class ExcelServiceImpl implements ExcelService{
-    private Part file;
-    private String fileContent;
-  
-    @Override
-    public String printExcel(){
-        return "Test";
-    }
-    @Override
-    public void upload() {
-    try {
-      fileContent = new Scanner(file.getInputStream())
-          .useDelimiter("\\A").next();
-    } catch (IOException e) {
-      // Error handling
-    }
-  }
- @Override
-  public Part getFile() {
-    return file;
-  }
-  @Override
-  public void setFile(Part file) {
-    this.file = file;
-  }
-  
+    @PersistenceContext
+    private EntityManager em;
+    
    @Override
-   public void createExcel(){
-        try
-        {
-            FileInputStream file = new FileInputStream(new File("C://test.xls"));
- 
-            //Create Workbook instance holding reference to .xlsx file
-            HSSFWorkbook workbook = new HSSFWorkbook(file);
- 
-            //Get first/desired sheet from the workbook
-            HSSFSheet sheet = workbook.getSheetAt(0);
- 
-            //Iterate through each rows one by one
-            Iterator<Row> rowIterator = sheet.iterator();
-            while (rowIterator.hasNext())
-            {
-                Row row = rowIterator.next();
-                //For each row, iterate through all the columns
-                Iterator<Cell> cellIterator = row.cellIterator();
-                 
-                while (cellIterator.hasNext())
-                {
-                    Cell cell = cellIterator.next();
-                    //Check the cell type and format accordingly
-                    switch (cell.getCellType())
-                    {
-                        case Cell.CELL_TYPE_NUMERIC:
-                            System.out.print(cell.getNumericCellValue() + "t");
-                            break;
-                        case Cell.CELL_TYPE_STRING:
-                            System.out.print(cell.getStringCellValue() + "t");
-                            break;
-                    }
-                }
-                System.out.println("");
-            }
-            file.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-   }
+    @TransactionAttribute(REQUIRES_NEW)
+    public void insertScore(int studentennummer, int testId, int score, int maxScore)
+    {
+        try{
+        Query q = em.createNativeQuery("INSERT INTO score (maxaantalpunten, score, studentid, testid) VALUES (?,?,?,?)");
+        q.setParameter(1, maxScore);
+        q.setParameter(2, score);
+        q.setParameter(3, studentennummer);
+        q.setParameter(4, testId);
+        q.executeUpdate();
+        }catch(Exception e){}
+    }
 }

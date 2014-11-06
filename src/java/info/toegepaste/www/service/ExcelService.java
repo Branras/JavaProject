@@ -12,9 +12,6 @@ import javax.servlet.http.Part;
  * @author Mathias
  */
 public interface ExcelService {
-    public String printExcel();
-    public void upload();
-    public Part getFile();
-    public void setFile(Part file);
-    public void createExcel();
+   
+    public void insertStudent(int studentennummer, int testId, int score, int maxScore);
 }
