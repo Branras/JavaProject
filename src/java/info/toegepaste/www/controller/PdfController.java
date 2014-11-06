@@ -29,12 +29,7 @@ import javax.faces.bean.ManagedBean;
 public class PdfController {
     public static final String RESULT
             = "D://Studenten.pdf";
-
-    public static void Write() throws DocumentException, IOException {
-        
-        new PdfController().createPdf(RESULT);
-    }
-
+    
     private List<Student> studenten;
     
     @EJB
@@ -47,6 +42,11 @@ public class PdfController {
     
     public List<Student> getStudenten() {
         return studenten;
+    }
+
+    public static void Write() throws DocumentException, IOException {
+        
+        new PdfController().createPdf(RESULT);
     }
     
     public void createPdf(String filename)
