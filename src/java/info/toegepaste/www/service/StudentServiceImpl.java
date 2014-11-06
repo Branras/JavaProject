@@ -37,4 +37,14 @@ public class StudentServiceImpl implements StudentService {
         Query q = em.createNamedQuery("Klas.findAll");
         return (List<Klas>) q.getResultList();          
     }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public void insertKlas(String naam) {
+        try{
+        Query q = em.createNamedQuery("Klas.insertKlas");
+        q.setParameter(1, naam);
+        q.executeUpdate();
+        }catch(Exception e){}
+    }
 }
