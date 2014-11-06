@@ -59,7 +59,7 @@ public class PdfController {
         document.open();
         // step 4
         for (Student student : studenten ) {
-            document.add(new Paragraph(student.getFamilienaam()));
+            document.add(new Paragraph("test"));
         }
         
 //        document.add(new Paragraph("Hello World!"));
