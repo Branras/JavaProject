@@ -42,7 +42,7 @@ public class StudentServiceImpl implements StudentService {
     @TransactionAttribute(REQUIRES_NEW)
     public void insertKlas(String naam) {
         try{
-        Query q = em.createNamedQuery("Klas.insertKlas");
+        Query q = em.createNativeQuery("INSERT INTO klas (naam) VALUES (?)");
         q.setParameter(1, naam);
         q.executeUpdate();
         }catch(Exception e){}

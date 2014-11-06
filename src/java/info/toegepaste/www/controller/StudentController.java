@@ -59,6 +59,6 @@ public class StudentController {
     
     public void insertKlas()
     {
-        
+        studentservice.insertKlas(naam);
     }
 }
