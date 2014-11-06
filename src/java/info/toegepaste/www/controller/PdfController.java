@@ -9,7 +9,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import info.toegepaste.www.model.Docent;
+import info.toegepaste.www.model.*;
 import info.toegepaste.www.model.Student;
 import info.toegepaste.www.service.DocentService;
 import info.toegepaste.www.service.StudentService;
@@ -35,10 +35,7 @@ public class PdfController {
     @EJB
     private StudentService studentservice;
     
-    @PostConstruct
-    public void init() {
-        studenten = studentservice.getAllStudenten();
-    }
+
     
 //    public List<Student> getStudenten() {
 //        return studenten;
@@ -47,6 +44,11 @@ public class PdfController {
     public static void Write() throws DocumentException, IOException {
         
         new PdfController().createPdf(RESULT);
+    }
+    
+    @PostConstruct
+    public void init() {
+        studenten = studentservice.getAllStudenten();
     }
     
     public void createPdf(String filename)
