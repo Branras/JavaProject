@@ -30,8 +30,7 @@ public class PdfController {
     public static final String RESULT
             = "D://Studenten.pdf";
     
-//    private List<Student> studenten;
-    public List<Student>studenten = PdfController.this.getStudenten();
+    private List<Student> studenten;
     
     @EJB
     private StudentService studentservice;
@@ -45,9 +44,8 @@ public class PdfController {
         return studenten;
     }
     
-    
 
-    public static void Write() throws DocumentException, IOException {
+    public void Write() throws DocumentException, IOException {
         
         new PdfController().createPdf(RESULT);
     }
