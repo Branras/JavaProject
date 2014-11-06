@@ -27,12 +27,14 @@ public class ExcelController {
     public Part file;
     public String fileContent;
     public String test;
+    public int cellNr;
+    
+    public int cellInt;
+    public String cellString;
     public HSSFWorkbook workbook;
     
     public void upload() {
     try {
-//      fileContent = new Scanner(file.getInputStream())
-//          .useDelimiter("\\A").next();
         //lees de content stream in naar de hssfworkbook
       workbook = new HSSFWorkbook(file.getInputStream());
       //kies de juiste pagina (eerste)
@@ -44,21 +46,27 @@ public class ExcelController {
                 Row row = rowIterator.next();
                 //Leest elke horizontale lijn van links naar rechts uit in de console
                 Iterator<Cell> cellIterator = row.cellIterator();
-                 
+                
+                cellNr = 0;
                 while (cellIterator.hasNext())
                 {
                     Cell cell = cellIterator.next();
+                    cellNr++;
                     //Check the cell type and format accordingly
                     switch (cell.getCellType())
                     {
                         case Cell.CELL_TYPE_NUMERIC:
                             System.out.print(cell.getNumericCellValue());
+                            cellInt = (int) cell.getNumericCellValue();
+                            
+                            
                             break;
                         case Cell.CELL_TYPE_STRING:
                             System.out.print(cell.getStringCellValue());
                             break;
                     }
                 }
+                
                 System.out.println("");
             }
 
