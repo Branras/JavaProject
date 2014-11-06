@@ -19,6 +19,10 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="studentController")
 public class StudentController {
     private List<Student> studenten;
+    private List<Klas> klassen;
+    
+    //inserten
+    private String naam;
     
     @EJB
     private StudentService studentservice;
@@ -26,6 +30,7 @@ public class StudentController {
     @PostConstruct
     public void init() {
         studenten = studentservice.getAllStudenten();
+        klassen = studentservice.getAllKlassen();
     }
 
     public List<Student> getStudenten() {
@@ -34,5 +39,26 @@ public class StudentController {
 
     public void setStudenten(List<Student> studenten) {
         this.studenten = studenten;
+    }
+
+    public List<Klas> getKlassen() {
+        return klassen;
+    }
+
+    public void setKlassen(List<Klas> klassen) {
+        this.klassen = klassen;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+    
+    public void insertKlas()
+    {
+        
     }
 }

@@ -113,6 +113,39 @@
                             </h:dataTable>
                         </article>
                     </article>
+                    
+                    <article>
+                        <header>
+                            <h2>Klassen</h2>
+                        </header>
+
+                        <article>
+                            <header>
+                                <p>Voeg klas toe</p>
+                            </header>
+                            <h:form>
+                                <p>
+                                    <label for="input_klasnaam">Klas naam: </label>
+                                    <h:inputText id="input_klasnaam" value="#{studentController.naam}"  pt:placeholder="Naam" required="true"/>
+                                </p>
+
+                                <p>
+                                    <h:commandButton action="#{studentController.insertKlas()}" value="Voeg toe" />
+                                </p>
+                            </h:form>
+                        </article>
+
+                        <article>
+                            <header>
+                                <p>Alle Klassen</p>
+                            </header>
+                            <h:dataTable var="klas" value="#{studentController.klassen}">
+                                <h:column>
+                                    <h:outputText value="#{klas.naam}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </article>
+                    </article>
 
                 </div>
             </div>

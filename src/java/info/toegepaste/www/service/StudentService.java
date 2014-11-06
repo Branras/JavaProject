@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface StudentService {
     public List<Student> getAllStudenten();
+    public List<Klas> getAllKlassen();
 }

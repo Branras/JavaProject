@@ -31,7 +31,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "klas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Klas.findAll", query = "SELECT k FROM Klas k"),
+    @NamedQuery(name = "Klas.findAll", query = "SELECT k FROM Klas k ORDER BY k.naam ASC"),
+    @NamedQuery(name = "Klas.insertKlas", query = "INSERT INTO Klas (naam) VALUES (?)"),
     @NamedQuery(name = "Klas.findByKlasid", query = "SELECT k FROM Klas k WHERE k.klasid = :klasid"),
     @NamedQuery(name = "Klas.findByNaam", query = "SELECT k FROM Klas k WHERE k.naam = :naam")})
 public class Klas implements Serializable {
