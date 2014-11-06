@@ -40,9 +40,9 @@ public class PdfController {
         studenten = studentservice.getAllStudenten();
     }
     
-    public List<Student> getStudenten() {
-        return studenten;
-    }
+//    public List<Student> getStudenten() {
+//        return studenten;
+//    }
 
     public static void Write() throws DocumentException, IOException {
         
