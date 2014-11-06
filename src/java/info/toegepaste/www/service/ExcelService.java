@@ -13,5 +13,5 @@ import javax.servlet.http.Part;
  */
 public interface ExcelService {
    
-    public void insertStudent(int studentennummer, int testId, int score, int maxScore);
+    public void insertScore(int studentennummer, int testId, int score, int maxScore);
 }

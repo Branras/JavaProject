@@ -67,10 +67,6 @@ public class ExcelController {
       // Error handling
     }
   }
- 
-    public void createExcel(){
-        excelservice.createExcel();
-    }
     public Part getFile() {
     return file;
   }
