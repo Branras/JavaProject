@@ -58,11 +58,11 @@ public class PdfController {
         // step 3
         document.open();
         // step 4
-        for (Student student : studenten ) {
-            document.add(new Paragraph(student.toString()));
-        }
+//        for (Student student : studenten ) {
+//            document.add(new Paragraph(student.toString()));
+//        }
         
-//        document.add(new Paragraph("Hello World!"));
+        document.add(new Paragraph("Hello World!"));
         // step 5
         document.close();
     }
