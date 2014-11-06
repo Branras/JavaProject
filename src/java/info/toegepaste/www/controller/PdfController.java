@@ -35,21 +35,21 @@ public class PdfController {
     @EJB
     private StudentService studentservice;
     
-
+    @PostConstruct
+    public void init() {
+        studenten = studentservice.getAllStudenten();
+    }
     
-//    public List<Student> getStudenten() {
-//        return studenten;
-//    }
+    public List<Student> getStudenten() {
+        return studenten;
+    }
 
     public static void Write() throws DocumentException, IOException {
         
         new PdfController().createPdf(RESULT);
     }
     
-    @PostConstruct
-    public void init() {
-        studenten = studentservice.getAllStudenten();
-    }
+    
     
     public void createPdf(String filename)
             throws DocumentException, IOException {
