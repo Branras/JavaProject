@@ -28,7 +28,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="pdfController")
 public class PdfController {
     public static final String RESULT
-            = "C://Users/hello.pdf";
+            = "D://Studenten.pdf";
 
     public static void Write() throws DocumentException, IOException {
         
