@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
 
@@ -75,31 +76,38 @@
                             <header>
                                 <p>Voeg studenten toe</p>
                             </header>
-                            <!--<h:form>
+                            <h:form>
                                 <p>
                                     <label for="input_voornaam">Voornaam: </label>
-                                    <h:inputText id="input_voornaam" value="#{docentController.voornaam}"  pt:placeholder="Voornaam" required="true" onkeyup="changeLogin()"/>
+                                    <h:inputText id="input_voornaam" value="#{studentController.voornaam}"  pt:placeholder="Voornaam" required="true"/>
                                 </p>
 
                                 <p>
                                     <label for="input_familienaam">Familienaam: </label>
-                                    <h:inputText id="input_familienaam" value="#{docentController.familienaam}"  pt:placeholder="Familienaam" required="true" onkeyup="changeLogin()"/>
+                                    <h:inputText id="input_familienaam" value="#{studentController.familienaam}"  pt:placeholder="Familienaam" required="true"/>
                                 </p>
 
                                 <p>
-                                    <label for="input_login">Login (auto generated): </label>
-                                    <h:inputText id="input_login" value="#{docentController.login}" required="true"/>
+                                    <label for="input_email">Email: </label>
+                                    <h:inputText id="input_email" value="#{studentController.email}" pt:placeholder="Email@Domain.com" required="true"/>
                                 </p>
 
                                 <p>
-                                    <label for="input_pass">Wachtwoord: </label>
-                                    <h:inputText id="input_pass" value="#{docentController.pass}"  pt:placeholder="Pass" required="true"/>
+                                    <label for="input_nummer">Studentnummer: </label>
+                                    <h:inputText id="input_nummer" value="#{studentController.nummer}"  pt:placeholder="1234567" required="true"/>
+                                </p>
+                                
+                                <p>
+                                    <label for="input_klas">Klas: </label>
+                                    <h:selectOneMenu id="input_klas" value="#{studentController.klassen}">
+                                        <f:selectItems value="#{studentController.klassen}" var="klas" itemValue="#{klas.klasid}" itemLabel="#{klas.naam}" />
+                                    </h:selectOneMenu>
                                 </p>
 
                                 <p>
-                                    <h:commandButton action="#{docentController.insertDocent()}" value="Voeg toe" />
+                                    <h:commandButton action="#{studentController.insertStudent()}" value="Voeg toe" />
                                 </p>
-                            </h:form>-->
+                            </h:form>
                         </article>
 
                         <article>

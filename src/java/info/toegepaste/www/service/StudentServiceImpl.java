@@ -47,4 +47,18 @@ public class StudentServiceImpl implements StudentService {
         q.executeUpdate();
         }catch(Exception e){}
     }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public void insertStudent(String familienaam, String voornaam, String Email, int nummer, int klasId) {
+        try{
+        Query q = em.createNativeQuery("INSERT INTO Student (email, familienaam, nummer, voornaam, klasid) VALUES (?,?,?,?,?)");
+        q.setParameter(1, Email);
+        q.setParameter(2, familienaam);
+        q.setParameter(3, nummer);
+        q.setParameter(4, voornaam);
+        q.setParameter(5, klasId);
+        q.executeUpdate();
+        }catch(Exception e){}
+    }
 }

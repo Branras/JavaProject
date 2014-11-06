@@ -16,4 +16,5 @@ public interface StudentService {
     public List<Student> getAllStudenten();
     public List<Klas> getAllKlassen();
     public void insertKlas(String naam);
+    public void insertStudent(String familienaam, String voornaam, String Email, int nummer, int klasId);
 }

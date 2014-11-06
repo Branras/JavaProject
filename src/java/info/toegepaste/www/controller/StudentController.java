@@ -21,8 +21,15 @@ public class StudentController {
     private List<Student> studenten;
     private List<Klas> klassen;
     
-    //inserten
+    //inserten klas
     private String naam;
+    
+    //inserten student
+    private String familienaam;
+    private String voornaam;
+    private String Email;
+    private int nummer;
+    private int klasId;
     
     @EJB
     private StudentService studentservice;
@@ -56,9 +63,54 @@ public class StudentController {
     public void setNaam(String naam) {
         this.naam = naam;
     }
+
+    public String getFamilienaam() {
+        return familienaam;
+    }
+
+    public void setFamilienaam(String familienaam) {
+        this.familienaam = familienaam;
+    }
+
+    public String getVoornaam() {
+        return voornaam;
+    }
+
+    public void setVoornaam(String voornaam) {
+        this.voornaam = voornaam;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public int getNummer() {
+        return nummer;
+    }
+
+    public void setNummer(int nummer) {
+        this.nummer = nummer;
+    }
+
+    public int getKlasId() {
+        return klasId;
+    }
+
+    public void setKlasId(int klasId) {
+        this.klasId = klasId;
+    }
     
     public void insertKlas()
     {
         studentservice.insertKlas(naam);
+    }
+    
+    public void insertStudent()
+    {
+        studentservice.insertStudent(familienaam, voornaam, Email, nummer, klasId);
     }
 }
