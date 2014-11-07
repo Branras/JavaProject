@@ -169,10 +169,10 @@
                                     <p>Klassen</p>
                                     <h:selectOneMenu id="klasses" value="#{resultatenController.selectedKlasId}">
                                         <f:selectItems value="#{resultatenController.klassen}" var="klas" itemLabel="#{klas.naam}" itemValue="#{klas.klasid}" />
-                                        <f:ajax event="change" render="tableKlasses" listener="#{resultatenController.getScoresByKlas()}" execute="tests"/>
+                                        <f:ajax event="change" render="tableKlasses" listener="#{resultatenController.getScoresByKlas()}" execute="klasses"/>
                                     </h:selectOneMenu>
                                     
-                                    <h:dataTable id="tableKlassen" border="2" var="score" value="#{resultatenController.scores}">
+                                    <h:dataTable id="tableKlasses" border="2" var="score" value="#{resultatenController.scores}">
                                         <h:column>
                                             <h:outputText value="#{score.scoreid}"/>
                                         </h:column>

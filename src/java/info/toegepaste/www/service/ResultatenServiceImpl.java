@@ -73,10 +73,8 @@ public class ResultatenServiceImpl implements ResultatenService{
     @Override
     @TransactionAttribute(REQUIRES_NEW)
     public List<Score> getScoresByKlas(int klasId) {
-        Klas klas = new Klas();
-        klas.setKlasid(klasId);
         Query q = em.createNamedQuery("Score.findScoresByKlas");
-        q.setParameter("klasid", klas);
+        q.setParameter("klasid", klasId);
         return (List<Score>) q.getResultList();        
     }
     
