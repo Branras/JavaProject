@@ -26,6 +26,9 @@ public class ResultatenController {
     
     //selected items
     private int selectedTestId;
+    private int selectedKlasId;
+    private int selectedVakId;
+    private int selectedStudentId;
     
     @EJB
     private ResultatenService resultatenservice;
@@ -86,12 +89,46 @@ public class ResultatenController {
     public void setSelectedTestId(int selectedTestId) {
         this.selectedTestId = selectedTestId;
     }
+
+    public int getSelectedKlasId() {
+        return selectedKlasId;
+    }
+
+    public void setSelectedKlasId(int selectedKlasId) {
+        this.selectedKlasId = selectedKlasId;
+    }
+
+    public int getSelectedVakId() {
+        return selectedVakId;
+    }
+
+    public void setSelectedVakId(int selectedVakId) {
+        this.selectedVakId = selectedVakId;
+    }
+
+    public int getSelectedStudentId() {
+        return selectedStudentId;
+    }
+
+    public void setSelectedStudentId(int selectedStudentId) {
+        this.selectedStudentId = selectedStudentId;
+    }
     
     
     
     public void getScoresByTest()
     {
         scores = resultatenservice.getScoresByTest(selectedTestId);
+    }
+    
+    public void getScoresByKlas()
+    {
+        scores = resultatenservice.getScoresByKlas(selectedKlasId);
+    }
+    
+    public void  getScoresByVak()
+    {
+        scores = resultatenservice.getScoresByVak(selectedVakId);
     }
     
 }

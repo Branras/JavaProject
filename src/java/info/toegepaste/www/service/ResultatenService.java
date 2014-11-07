@@ -20,4 +20,6 @@ public interface ResultatenService {
     
     public List<Score> getAllScores();
     public List<Score> getScoresByTest(int testId);
+    public List<Score> getScoresByKlas(int klasId);
+    public List<Score> getScoresByVak(int vakId);
 }

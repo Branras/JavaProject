@@ -144,13 +144,22 @@
                                             <h:outputText value="#{score.scoreid}"/>
                                         </h:column>
                                         <h:column>
+                                            <h:outputText value="#{score.testid.vakid.naam}"/>
+                                        </h:column>
+                                        <h:column>
                                             <h:outputText value="#{score.testid.naam}"/>
                                         </h:column>
                                         <h:column>
                                             <h:outputText value="#{score.score} / #{score.maxaantalpunten}"/>
                                         </h:column>
                                         <h:column>
+                                            <h:outputText value="#{score.testid.datum}"/>
+                                        </h:column>
+                                        <h:column>
                                             <h:outputText value="#{score.studentid.familienaam} #{score.studentid.voornaam}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.studentid.klasid.naam}"/>
                                         </h:column>
                                     </h:dataTable>
 
@@ -158,10 +167,34 @@
 
                                 <div id="klassen">
                                     <p>Klassen</p>
-                                    <h:selectOneMenu id="klasses" value="#{resultatenController.klassen}">
+                                    <h:selectOneMenu id="klasses" value="#{resultatenController.selectedKlasId}">
                                         <f:selectItems value="#{resultatenController.klassen}" var="klas" itemLabel="#{klas.naam}" itemValue="#{klas.klasid}" />
-                                        <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
+                                        <f:ajax event="change" render="tableKlasses" listener="#{resultatenController.getScoresByKlas()}" execute="tests"/>
                                     </h:selectOneMenu>
+                                    
+                                    <h:dataTable id="tableKlassen" border="2" var="score" value="#{resultatenController.scores}">
+                                        <h:column>
+                                            <h:outputText value="#{score.scoreid}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.testid.vakid.naam}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.testid.naam}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.score} / #{score.maxaantalpunten}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.testid.datum}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.studentid.familienaam} #{score.studentid.voornaam}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.studentid.klasid.naam}"/>
+                                        </h:column>
+                                    </h:dataTable>
                                 </div>
 
                                 <div id="vakken">

@@ -30,6 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Score.findAll", query = "SELECT s FROM Score s"),
     @NamedQuery(name = "Score.findScoresByTest", query = "SELECT s FROM Score s WHERE s.testid = :testid"),
+    @NamedQuery(name = "Score.findScoresByKlas", query = "SELECT s FROM Score s WHERE s.studentid.klasid.klasid = :klasid"),
+    @NamedQuery(name = "Score.findScoresByVak", query = "SELECT s FROM Score s WHERE s.testid.vakid = :vakid"),
     @NamedQuery(name = "Score.findByScoreid", query = "SELECT s FROM Score s WHERE s.scoreid = :scoreid"),
     @NamedQuery(name = "Score.findByScore", query = "SELECT s FROM Score s WHERE s.score = :score"),
     @NamedQuery(name = "Score.findByMaxaantalpunten", query = "SELECT s FROM Score s WHERE s.maxaantalpunten = :maxaantalpunten")})
