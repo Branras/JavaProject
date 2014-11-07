@@ -30,6 +30,7 @@ public class ResultatenController {
     public void init() {
         klassen = resultatenservice.getAllKlassen();
         testen = resultatenservice.getAllTesten();
+        vakken = resultatenservice.getAllVakken();
     }
 
     public List<Klas> getKlassen() {

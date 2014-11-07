@@ -109,12 +109,19 @@
                                 </div>
                                 
                                 <div id="klassen">
-                                    <p>Testen</p>
+                                    <p>Klassen</p>
                                     <h:selectOneMenu id="klasses" value="#{resultatenController.klassen}">
                                         <f:selectItems value="#{resultatenController.klassen}" var="klas" itemLabel="#{klas.naam}" itemValue="#{klas.klasid}" />
                                         <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
                                     </h:selectOneMenu>
-
+                                </div>
+                                
+                                <div id="vakken">
+                                    <p>Vakken</p>
+                                    <h:selectOneMenu id="vakkes" value="#{resultatenController.vakken}">
+                                        <f:selectItems value="#{resultatenController.vakken}" var="vak" itemLabel="#{vak.naam}" itemValue="#{vak.vakid}" />
+                                        <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
+                                    </h:selectOneMenu>
                                 </div>
 
 
