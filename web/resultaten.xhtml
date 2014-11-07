@@ -114,15 +114,10 @@
                                         <h:commandButton value="UPLOAD" action="#{ExcelController.upload}"/>
                                     </h:form></p>
                             </header>
-                            <h:form>
-                                <p>
-                                    TODO
-                                </p>
-                            </h:form>
                         </article>
                         <article>
                             <header>
-                                <p>Alle Resultaten</p>
+                                <p>Resultaten</p>
                             </header>
                             <h:form>
                                 <div id="selectie">
@@ -147,7 +142,7 @@
                                             <h:outputText value="#{score.testid.vakid.naam}"/>
                                         </h:column>
                                         <h:column>
-                                            <h:outputText value="#{score.testid.naam}"/>
+                                            <strong><h:outputText value="#{score.testid.naam}"/></strong>
                                         </h:column>
                                         <h:column>
                                             <h:outputText value="#{score.score} / #{score.maxaantalpunten}"/>
@@ -192,7 +187,7 @@
                                             <h:outputText value="#{score.studentid.familienaam} #{score.studentid.voornaam}"/>
                                         </h:column>
                                         <h:column>
-                                            <h:outputText value="#{score.studentid.klasid.naam}"/>
+                                            <strong><h:outputText value="#{score.studentid.klasid.naam}"/></strong>
                                         </h:column>
                                     </h:dataTable>
                                 </div>
