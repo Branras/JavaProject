@@ -36,6 +36,40 @@
                 window.location = "index.xhtml";
             }
         </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#testen").show();
+                $("#klassen").hide();
+                $("#vakken").hide();
+                $("#studenten").hide();
+
+                $("#testknop").click(function () {
+                    $("#testen").show();
+                    $("#klassen").hide();
+                    $("#vakken").hide();
+                    $("#studenten").hide();
+                });
+                $("#klasknop").click(function () {
+                    $("#testen").hide();
+                    $("#klassen").show();
+                    $("#vakken").hide();
+                    $("#studenten").hide();
+                });
+                $("#vakknop").click(function () {
+                    $("#testen").hide();
+                    $("#klassen").hide();
+                    $("#vakken").show();
+                    $("#studenten").hide();
+                });
+                $("#studentknop").click(function () {
+                    $("#testen").hide();
+                    $("#klassen").hide();
+                    $("#vakken").hide();
+                    $("#studenten").show();
+                });
+            });
+        </script>
     </h:head>
     <h:body>
         <!-- Header -->
@@ -96,18 +130,29 @@
                                     <a href="#" id="klasknop">Klassen</a>
                                     <a href="#" id="vakknop">Vakken</a>
                                     <a href="#" id="studentknop">Studenten</a>
-                                    <a href="#" id="nummerknop">Student Nummers</a>
                                 </div>
 
                                 <div id="testen">
                                     <p>Testen</p>
-                                    <h:selectOneMenu id="tests" value="#{resultatenController.testen}">
+                                    <h:selectOneMenu id="tests" value="#{resultatenController.selectedTestId}">
                                         <f:selectItems value="#{resultatenController.testen}" var="test" itemLabel="#{test.naam}" itemValue="#{test.testid}" />
-                                        <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
+                                        <f:ajax event="change" render="tableTests" listener="#{resultatenController.}" execute="tests"/>
                                     </h:selectOneMenu>
 
+                                    <h:dataTable id="tableTests" border="2" var="score" value="#{projectController.scores}">
+                                        <h:column>
+                                            <h:outputText value="#{score.id}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.punt}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.student.naam}"/>
+                                        </h:column>
+                                    </h:dataTable>
+
                                 </div>
-                                
+
                                 <div id="klassen">
                                     <p>Klassen</p>
                                     <h:selectOneMenu id="klasses" value="#{resultatenController.klassen}">
@@ -115,7 +160,7 @@
                                         <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
                                     </h:selectOneMenu>
                                 </div>
-                                
+
                                 <div id="vakken">
                                     <p>Vakken</p>
                                     <h:selectOneMenu id="vakkes" value="#{resultatenController.vakken}">
@@ -123,14 +168,16 @@
                                         <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
                                     </h:selectOneMenu>
                                 </div>
-                                
+
                                 <div id="studenten">
                                     <p>Studenten</p>
-                                    <h:selectOneMenu id="vakkes" value="#{resultatenController.studenten}">
+                                    <h:selectOneMenu id="students" value="#{resultatenController.studenten}">
                                         <f:selectItems value="#{resultatenController.studenten}" var="student" itemLabel="#{student.familienaam} #{student.voornaam}" itemValue="#{student.studentid}" />
                                         <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
                                     </h:selectOneMenu>
                                 </div>
+
+
 
 
                             </h:form>

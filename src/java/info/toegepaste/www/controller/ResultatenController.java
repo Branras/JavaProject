@@ -23,6 +23,12 @@ public class ResultatenController {
     private List<Vak> vakken;
     private List<Student> studenten;
     
+    
+    private List<Score> scores;
+    
+    //selected items
+    private int selectedTestId;
+    
     @EJB
     private ResultatenService resultatenservice;
     
@@ -65,7 +71,20 @@ public class ResultatenController {
     public void setStudenten(List<Student> studenten) {
         this.studenten = studenten;
     }
+
+    public int getSelectedTestId() {
+        return selectedTestId;
+    }
+
+    public void setSelectedTestId(int selectedTestId) {
+        this.selectedTestId = selectedTestId;
+    }
     
     
+    
+    public void getScoresByTest()
+    {
+        scores = resultatenservice.getScoresByTest(selectedTestId);
+    }
     
 }
