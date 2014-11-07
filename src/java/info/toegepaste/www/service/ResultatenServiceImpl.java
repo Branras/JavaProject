@@ -64,7 +64,7 @@ public class ResultatenServiceImpl implements ResultatenService{
     @TransactionAttribute(REQUIRES_NEW)
     public List<Score> getScoresByTest(int testId) {
         Query q = em.createNamedQuery("Score.findScoresByTest");
-        q.setParameter(1, testId);
+        q.setParameter(0, testId);
         return (List<Score>) q.getResultList();        
     }
 }
