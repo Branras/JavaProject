@@ -18,5 +18,6 @@ public interface ResultatenService {
     public List<Vak> getAllVakken();
     public List<Student> getAllStudenten();
     
+    public List<Score> getAllScores();
     public List<Score> getScoresByTest(int testId);
 }

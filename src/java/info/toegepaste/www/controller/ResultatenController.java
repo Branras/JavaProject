@@ -22,6 +22,7 @@ public class ResultatenController {
     private List<Test> testen;
     private List<Vak> vakken;
     private List<Student> studenten;
+    private List<Score> scores;
     
     
     private List<Score> scores;
@@ -38,6 +39,7 @@ public class ResultatenController {
         testen = resultatenservice.getAllTesten();
         vakken = resultatenservice.getAllVakken();
         studenten = resultatenservice.getAllStudenten();
+        scores = resultatenservice.getAllScores();
     }
 
     public List<Klas> getKlassen() {
@@ -70,6 +72,14 @@ public class ResultatenController {
 
     public void setStudenten(List<Student> studenten) {
         this.studenten = studenten;
+    }
+
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<Score> scores) {
+        this.scores = scores;
     }
 
     public int getSelectedTestId() {
