@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface ResultatenService {
     public List<Klas> getAllKlassen();
+    public List<Test> getAllTesten();
 }

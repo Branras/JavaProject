@@ -29,6 +29,7 @@ public class ResultatenController {
     @PostConstruct
     public void init() {
         klassen = resultatenservice.getAllKlassen();
+        testen = resultatenservice.getAllTesten();
     }
 
     public List<Klas> getKlassen() {

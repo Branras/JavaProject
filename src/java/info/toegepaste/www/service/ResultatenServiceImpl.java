@@ -29,4 +29,11 @@ public class ResultatenServiceImpl implements ResultatenService{
         Query q = em.createNamedQuery("Klas.findAll");
         return (List<Klas>) q.getResultList();        
     }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public List<Test> getAllTesten() {
+        Query q = em.createNamedQuery("Test.findAll");
+        return (List<Test>) q.getResultList();        
+    }
 }
