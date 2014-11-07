@@ -31,6 +31,7 @@ public class ResultatenController {
         klassen = resultatenservice.getAllKlassen();
         testen = resultatenservice.getAllTesten();
         vakken = resultatenservice.getAllVakken();
+        studenten = resultatenservice.getAllStudenten();
     }
 
     public List<Klas> getKlassen() {

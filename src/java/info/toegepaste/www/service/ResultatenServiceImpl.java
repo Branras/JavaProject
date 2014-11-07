@@ -43,4 +43,11 @@ public class ResultatenServiceImpl implements ResultatenService{
         Query q = em.createNamedQuery("Vak.findAll");
         return (List<Vak>) q.getResultList();        
     }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public List<Student> getAllStudenten() {
+        Query q = em.createNamedQuery("Student.findAll");
+        return (List<Student>) q.getResultList();        
+    }
 }

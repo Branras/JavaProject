@@ -123,6 +123,14 @@
                                         <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
                                     </h:selectOneMenu>
                                 </div>
+                                
+                                <div id="studenten">
+                                    <p>Studenten</p>
+                                    <h:selectOneMenu id="vakkes" value="#{resultatenController.studenten}">
+                                        <f:selectItems value="#{resultatenController.studenten}" var="student" itemLabel="#{student.familienaam} #{student.voornaam}" itemValue="#{student.studentid}" />
+                                        <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
+                                    </h:selectOneMenu>
+                                </div>
 
 
                             </h:form>

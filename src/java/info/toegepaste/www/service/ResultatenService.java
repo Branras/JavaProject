@@ -16,4 +16,5 @@ public interface ResultatenService {
     public List<Klas> getAllKlassen();
     public List<Test> getAllTesten();
     public List<Vak> getAllVakken();
+    public List<Student> getAllStudenten();
 }
