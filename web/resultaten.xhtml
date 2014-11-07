@@ -136,18 +136,18 @@
                                     <p>Testen</p>
                                     <h:selectOneMenu id="tests" value="#{resultatenController.selectedTestId}">
                                         <f:selectItems value="#{resultatenController.testen}" var="test" itemLabel="#{test.naam}" itemValue="#{test.testid}" />
-                                        <f:ajax event="change" render="tableTests" listener="#{resultatenController.}" execute="tests"/>
+                                        <f:ajax event="change" render="tableTests" listener="#{resultatenController.getScoresByTest}" execute="tests"/>
                                     </h:selectOneMenu>
 
-                                    <h:dataTable id="tableTests" border="2" var="score" value="#{projectController.scores}">
+                                    <h:dataTable id="tableTests" border="2" var="score" value="#{resultatenController.scores}">
                                         <h:column>
-                                            <h:outputText value="#{score.id}"/>
+                                            <h:outputText value="#{score.scoreid}"/>
                                         </h:column>
                                         <h:column>
-                                            <h:outputText value="#{score.punt}"/>
+                                            <h:outputText value="#{score.score} / #{score.maxaantalpunten}"/>
                                         </h:column>
                                         <h:column>
-                                            <h:outputText value="#{score.student.naam}"/>
+                                            <h:outputText value="#{score.studentid.familienaam} #{score.studentid.voornaam}"/>
                                         </h:column>
                                     </h:dataTable>
 

@@ -24,9 +24,6 @@ public class ResultatenController {
     private List<Student> studenten;
     private List<Score> scores;
     
-    
-    private List<Score> scores;
-    
     //selected items
     private int selectedTestId;
     
