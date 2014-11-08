@@ -8,6 +8,7 @@ package info.toegepaste.www.controller;
 import info.toegepaste.www.service.*;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Locale;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.servlet.http.Part;
@@ -29,9 +30,23 @@ public class ExcelController {
     public String test;
     public int cellNr;
     
+    private String infoCel;
+    private int scoresTeller = 1;
+    
     public int cellInt;
     public String cellString;
     public HSSFWorkbook workbook;
+    
+    public String klasDebug;
+    public String vakDebug;
+    public String testDebug;
+    public int totaalDebug;
+    public int studentennrDebug;
+    public String naamDebug;
+    public int scoreDebug;
+    
+    
+    
     
     public void upload() {
     try {
@@ -60,10 +75,68 @@ public class ExcelController {
                             cellInt = (int) cell.getNumericCellValue();
                             
                             
+                            if(infoCel.equals("totaal")){
+                                totaalDebug = cellInt;
+                            }else{
+                                if(scoresTeller == 1){
+                                            studentennrDebug = cellInt;
+                                            scoresTeller++;
+                                        }else{
+                                            scoreDebug = cellInt;
+                                            scoresTeller = 1;
+                                        }
+                            }
+                            
                             break;
                         case Cell.CELL_TYPE_STRING:
                             System.out.print(cell.getStringCellValue());
-                            break;
+                            cellString = cell.getStringCellValue();
+                          
+                            switch(cellString.toLowerCase()){
+                                    case "klas":
+                                        infoCel = cellString.toLowerCase();
+                                        break;
+                                    case "vak":
+                                        infoCel = cellString.toLowerCase();
+                                        break;
+                                    case "test":
+                                        infoCel = cellString.toLowerCase();
+                                        break;
+                                    case "score":
+                                        infoCel = cellString.toLowerCase();
+                                        break;
+                                    case "totaal":
+                                        infoCel = cellString.toLowerCase();
+                                        break;
+                                    default:
+                                        infoCel = "  ";
+                                        break;
+                                }
+                            
+                            //Als er een titel in de cel zit en steek in infoCel
+//                            if(cellString.toLowerCase() == "vak" || cellString.toLowerCase() == "klas" || cellString.toLowerCase() == "test" || cellString.toLowerCase() == "totaal" || cellString.toLowerCase() == "score"){
+//                                infoCel = cellString.toLowerCase();
+//                            }else{
+                                //inhoud in de cell
+                                switch(infoCel){
+                                    case "klas":
+                                        klasDebug = cellString;
+                                        break;
+                                    case "vak":
+                                        vakDebug = cellString;
+                                        break;
+                                    case "test":
+                                        testDebug = cellString;
+                                        break;
+                                    case "score":
+                                        naamDebug = cellString;
+                                        scoresTeller++;
+                                        break;
+                                    default:
+                                        break;
+                                }
+//                            }
+                        break;
                     }
                 }
                 
