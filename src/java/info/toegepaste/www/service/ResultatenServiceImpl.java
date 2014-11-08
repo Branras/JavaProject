@@ -87,4 +87,14 @@ public class ResultatenServiceImpl implements ResultatenService{
         q.setParameter("vakid", vak);
         return (List<Score>) q.getResultList();        
     }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public List<Score> getScoresByStudent(int studentId) {
+        Student student = new Student();
+        student.setStudentid(studentId);
+        Query q = em.createNamedQuery("Score.findScoresByStudent");
+        q.setParameter("studentid", student);
+        return (List<Score>) q.getResultList();        
+    }
 }

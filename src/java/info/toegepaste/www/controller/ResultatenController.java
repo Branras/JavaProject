@@ -131,4 +131,9 @@ public class ResultatenController {
         scores = resultatenservice.getScoresByVak(selectedVakId);
     }
     
+    public void  getScoresByStudent()
+    {
+        scores = resultatenservice.getScoresByStudent(selectedStudentId);
+    }
+    
 }
