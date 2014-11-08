@@ -118,22 +118,30 @@ public class ResultatenController {
     
     public void getScoresByTest()
     {
+        if(selectedStudentId != 0)
         scores = resultatenservice.getScoresByTest(selectedTestId);
+        else scores = resultatenservice.getAllScores();
     }
     
     public void getScoresByKlas()
     {
+        if(selectedStudentId != 0)
         scores = resultatenservice.getScoresByKlas(selectedKlasId);
+        else scores = resultatenservice.getAllScores();
     }
     
     public void  getScoresByVak()
     {
+        if(selectedStudentId != 0)
         scores = resultatenservice.getScoresByVak(selectedVakId);
+        else scores = resultatenservice.getAllScores();
     }
     
     public void  getScoresByStudent()
     {
+        if(selectedStudentId != 0)
         scores = resultatenservice.getScoresByStudent(selectedStudentId);
+        else scores = resultatenservice.getAllScores();
     }
     
 }

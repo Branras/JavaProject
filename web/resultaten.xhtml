@@ -130,6 +130,7 @@
                                 <div id="testen">
                                     <p>Testen</p>
                                     <h:selectOneMenu id="tests" value="#{resultatenController.selectedTestId}">
+                                        <f:selectItem itemLabel="-- Alles --" itemValue="0" />
                                         <f:selectItems value="#{resultatenController.testen}" var="test" itemLabel="#{test.naam}" itemValue="#{test.testid}" />
                                         <f:ajax event="change" render="tableTests" listener="#{resultatenController.getScoresByTest}" execute="tests"/>
                                     </h:selectOneMenu>
@@ -163,10 +164,11 @@
                                 <div id="klassen">
                                     <p>Klassen</p>
                                     <h:selectOneMenu id="klasses" value="#{resultatenController.selectedKlasId}">
+                                        <f:selectItem itemLabel="-- Alles --" itemValue="0" />
                                         <f:selectItems value="#{resultatenController.klassen}" var="klas" itemLabel="#{klas.naam}" itemValue="#{klas.klasid}" />
                                         <f:ajax event="change" render="tableKlasses" listener="#{resultatenController.getScoresByKlas()}" execute="klasses"/>
                                     </h:selectOneMenu>
-                                    
+
                                     <h:dataTable id="tableKlasses" border="2" var="score" value="#{resultatenController.scores}">
                                         <h:column>
                                             <h:outputText value="#{score.scoreid}"/>
@@ -195,11 +197,12 @@
                                 <div id="vakken">
                                     <p>Vakken</p>
                                     <h:selectOneMenu id="vakkes" value="#{resultatenController.selectedVakId}">
+                                        <f:selectItem itemLabel="-- Alles --" itemValue="0" />
                                         <f:selectItems value="#{resultatenController.vakken}" var="vak" itemLabel="#{vak.naam}" itemValue="#{vak.vakid}" />
                                         <f:ajax event="change" render="tableVakkes" listener="#{resultatenController.getScoresByVak()}" execute="vakkes"/>
                                     </h:selectOneMenu>
-                                    
-                                     <h:dataTable id="tableVakkes" border="2" var="score" value="#{resultatenController.scores}">
+
+                                    <h:dataTable id="tableVakkes" border="2" var="score" value="#{resultatenController.scores}">
                                         <h:column>
                                             <h:outputText value="#{score.scoreid}"/>
                                         </h:column>
@@ -227,10 +230,12 @@
                                 <div id="studenten">
                                     <p>Studenten</p>
                                     <h:selectOneMenu id="students" value="#{resultatenController.selectedStudentId}">
+                                        <f:selectItem itemLabel="-- Alles --" itemValue="0" />
                                         <f:selectItems value="#{resultatenController.studenten}" var="student" itemLabel="#{student.familienaam} #{student.voornaam}" itemValue="#{student.studentid}" />
+                                        
                                         <f:ajax event="change" render="tableStudents" listener="#{resultatenController.getScoresByStudent}" execute="students"/>
                                     </h:selectOneMenu>
-                                    
+
                                     <h:dataTable id="tableStudents" border="2" var="score" value="#{resultatenController.scores}">
                                         <h:column>
                                             <h:outputText value="#{score.scoreid}"/>
