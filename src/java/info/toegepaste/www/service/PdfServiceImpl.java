@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import info.toegepaste.www.model.*;
+import java.lang.*;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -60,6 +61,15 @@ public class PdfServiceImpl implements PdfService {
         return student;
     }
    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public Test getTestById(int id) {
+        Test test = null;
+        Query q = em.createNamedQuery("Test.findByTestid");
+        q.setParameter("testid", id);
+        test = (Test) q.getSingleResult();         
+        return test;
+    }
     
     @Override
     public void genereerPdfTest() throws DocumentException, IOException {
@@ -93,9 +103,9 @@ public class PdfServiceImpl implements PdfService {
         table.addCell("Score");
  
         for (int i = 0; i < getAllScores().size(); i++) {
+            table.addCell("" +  getAllScores().get(i).getTestid().getTestid().intValue() );
+            table.addCell("" + getStudentById(getAllScores().get(i).getStudentid().getStudentid().intValue()) );
             table.addCell("" + getAllScores().get(i).getScore() );
-//            table.addCell(getStudentById(getAllScores().get(i).getStudentid().intValue() ) );
-//            table.addCell(getAllScores().get(i).getStudentid().intValue());
         }
  
         document.add(table);

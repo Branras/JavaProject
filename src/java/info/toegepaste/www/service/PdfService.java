@@ -12,6 +12,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import info.toegepaste.www.model.Score;
 import info.toegepaste.www.model.Student;
+import info.toegepaste.www.model.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -30,4 +31,5 @@ public interface PdfService {
     public void exportPdf(File temp) throws FileNotFoundException, IOException;
     public List<Score> getAllScores();
     public Student getStudentById(int id);
+    public Test getTestById(int id);
 }
