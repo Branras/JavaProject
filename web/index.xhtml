@@ -8,6 +8,19 @@
         <title>Score Tracker Login</title>
         <link rel="stylesheet" href="css/login.css" media="screen" type="text/css" />
         
+        <script>
+            //DIT TOEVOEGEN OP IEDERE PAGINA
+            //MUCH SECURITY
+            //VERY AWESOME
+            //NICE CODE
+            var docentid = null;
+            docentid = " " + '<h:outputText value="${sessionScope.docent.getId()}"/>';
+            if (docentid !== " ")
+            {
+                //alert("bye bye");
+                window.location = "index.xhtml";
+            }
+        </script>
     </h:head>
     <h:body>
         <div id="login">
