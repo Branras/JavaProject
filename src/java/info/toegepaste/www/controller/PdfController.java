@@ -28,7 +28,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="pdfController")
 public class PdfController {
     public static final String RESULT
-            = "D://Studenten.pdf";
+            = "D://Studenten5.pdf";
     
     public List<Student> studenten;
     
