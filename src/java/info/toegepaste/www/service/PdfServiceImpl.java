@@ -104,7 +104,7 @@ public class PdfServiceImpl implements PdfService {
  
         for (int i = 0; i < getAllScores().size(); i++) {
             table.addCell("" + getTestById(getAllScores().get(i).getTestid().getTestid().intValue()).getNaam() );
-            table.addCell("" + getStudentById(getAllScores().get(i).getStudentid().getStudentid().intValue()).getVoornaam() + getStudentById(getAllScores().get(i).getStudentid().getStudentid().intValue()).getFamilienaam());
+            table.addCell("" + getStudentById(getAllScores().get(i).getStudentid().getStudentid().intValue()).getVoornaam() + " " +  getStudentById(getAllScores().get(i).getStudentid().getStudentid().intValue()).getFamilienaam());
             table.addCell("" + getAllScores().get(i).getScore() + "/" + getAllScores().get(i).getMaxaantalpunten() );
         }
  
