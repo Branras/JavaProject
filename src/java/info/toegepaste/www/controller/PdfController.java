@@ -62,6 +62,8 @@ public class PdfController {
         // step 3
         document.open();
         // step 4
+        
+        studenten = studentservice.getAllStudenten();
         for (Student student : studenten ) {
             document.add(new Paragraph("test"));
         }
