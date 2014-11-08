@@ -194,15 +194,39 @@
 
                                 <div id="vakken">
                                     <p>Vakken</p>
-                                    <h:selectOneMenu id="vakkes" value="#{resultatenController.vakken}">
+                                    <h:selectOneMenu id="vakkes" value="#{resultatenController.selectedVakId}">
                                         <f:selectItems value="#{resultatenController.vakken}" var="vak" itemLabel="#{vak.naam}" itemValue="#{vak.vakid}" />
-                                        <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
+                                        <f:ajax event="change" render="tableVakkes" listener="#{resultatenController.getScoresByVak()}" execute="vakkes"/>
                                     </h:selectOneMenu>
+                                    
+                                     <h:dataTable id="tableVakkes" border="2" var="score" value="#{resultatenController.scores}">
+                                        <h:column>
+                                            <h:outputText value="#{score.scoreid}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <strong><h:outputText value="#{score.testid.vakid.naam}"/></strong>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.testid.naam}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.score} / #{score.maxaantalpunten}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.testid.datum}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.studentid.familienaam} #{score.studentid.voornaam}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <h:outputText value="#{score.studentid.klasid.naam}"/>
+                                        </h:column>
+                                    </h:dataTable>
                                 </div>
 
                                 <div id="studenten">
                                     <p>Studenten</p>
-                                    <h:selectOneMenu id="students" value="#{resultatenController.studenten}">
+                                    <h:selectOneMenu id="students" value="#{resultatenController.selectedStudentId}">
                                         <f:selectItems value="#{resultatenController.studenten}" var="student" itemLabel="#{student.familienaam} #{student.voornaam}" itemValue="#{student.studentid}" />
                                         <!--<f:ajax event="change" render="tableTests" listener="#{projectController.getScoresByTest()}" execute="tests"/>-->
                                     </h:selectOneMenu>

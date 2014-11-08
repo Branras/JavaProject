@@ -83,7 +83,7 @@ public class ResultatenServiceImpl implements ResultatenService{
     public List<Score> getScoresByVak(int vakId) {
         Vak vak = new Vak();
         vak.setVakid(vakId);
-        Query q = em.createNamedQuery("Score.findScoresByTest");
+        Query q = em.createNamedQuery("Score.findScoresByVak");
         q.setParameter("vakid", vak);
         return (List<Score>) q.getResultList();        
     }
