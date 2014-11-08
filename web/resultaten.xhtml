@@ -115,16 +115,20 @@
                                     </h:form></p>
                             </header>
                         </article>
+
                         <article>
                             <header>
                                 <p>Resultaten</p>
+                                <p>Selecteer een van de categorieën om te zoeken</p>
                             </header>
                             <h:form>
                                 <div id="selectie">
-                                    <a href="#" id="testknop">Testen</a>
-                                    <a href="#" id="klasknop">Klassen</a>
-                                    <a href="#" id="vakknop">Vakken</a>
-                                    <a href="#" id="studentknop">Studenten</a>
+                                    <header>
+                                        <a href="#" id="testknop">Testen</a>
+                                        <a href="#" id="klasknop">Klassen</a>
+                                        <a href="#" id="vakknop">Vakken</a>
+                                        <a href="#" id="studentknop">Studenten</a>
+                                    </header>
                                 </div>
 
                                 <div id="testen">
@@ -232,7 +236,7 @@
                                     <h:selectOneMenu id="students" value="#{resultatenController.selectedStudentId}">
                                         <f:selectItem itemLabel="-- Alles --" itemValue="0" />
                                         <f:selectItems value="#{resultatenController.studenten}" var="student" itemLabel="#{student.familienaam} #{student.voornaam}" itemValue="#{student.studentid}" />
-                                        
+
                                         <f:ajax event="change" render="tableStudents" listener="#{resultatenController.getScoresByStudent}" execute="students"/>
                                     </h:selectOneMenu>
 
