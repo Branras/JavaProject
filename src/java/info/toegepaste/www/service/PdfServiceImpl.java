@@ -16,7 +16,10 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
@@ -37,30 +40,94 @@ import org.springframework.web.portlet.bind.annotation.ActionMapping;
  */
 @Stateless
 public class PdfServiceImpl implements PdfService {
+    @PersistenceContext
+    private EntityManager em;
     
-//    protected void postPdf(HttpServletRequest request, HttpServletResponse response)
-//        throws ServletException, IOException {
-//        response.setContentType("application/pdf");
-//        Document document = new Document();
-//        try{
-//        PdfWriter.getInstance(document, response.getOutputStream());
-//            document.open();
-//            document.add(new Paragraph("Gello Pdf"));
-//            PdfPTable table = new PdfPTable(2);
-//            table.addCell("One");
-//            table.addCell("Two");
-//            table.addCell("Three");
-//            table.addCell("Four");
-//            table.addCell("Five");
-//            table.addCell("Six");
-//            
-//            document.add(table);
-//            document.close();
-//          }
-//        catch (DocumentException e){
-//            e.printStackTrace();
-//        }
-//    }   
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public List<Score> getAllScores() {
+        Query q = em.createNamedQuery("Score.findAll");
+        return (List<Score>) q.getResultList();        
+    }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public Student getStudentById(int id) {
+        Student student = null;
+        Query q = em.createNamedQuery("Student.findByStudentid");
+        q.setParameter("studentid", id);
+        student = (Student) q.getSingleResult();         
+        return student;
+    }
+   
+    
+    @Override
+    public void genereerPdfTest() throws DocumentException, IOException {
+        //Maak een nieuw document aan
+        Document document = new Document();
+ 
+        //Temp file aanmaken
+        File temp = File.createTempFile("rapport", ".pdf");
+ 
+        //PDF Genereren
+        PdfWriter.getInstance(document, new FileOutputStream(temp.getAbsolutePath()));
+ 
+        //Document openen
+        document.open();
+ 
+        //Inhoud toevoegen
+//        document.add(new Paragraph("Rapport"));
+//        document.add(new Paragraph("Test: " + getTest(testId).getNaam()));
+// 
+//        document.add(new Paragraph("Klas: " + getKlas(getVak(
+//                getTest(testId).getVakId().intValue()).getKlasId()).getNaam()
+//        ));
+//        document.add(new Paragraph("Vak: " + getVak(
+//                getTest(testId).getVakId().intValue()).getNaam()
+//        ));
+ 
+        PdfPTable table = new PdfPTable(3);
+        table.setSpacingBefore(10.0f);
+        table.addCell("Test");
+        table.addCell("Student");
+        table.addCell("Score");
+ 
+        for (int i = 0; i < getAllScores().size(); i++) {
+            table.addCell("" + getAllScores().get(i).getScore() );
+//            table.addCell(getStudentById(getAllScores().get(i).getStudentid().intValue() ) );
+//            table.addCell(getAllScores().get(i).getStudentid().intValue());
+        }
+ 
+        document.add(table);
+ 
+        //Document sluiten
+        document.close();
+ 
+        exportPdf(temp);
+    }   
+    
+    @Override
+    public void exportPdf(File temp) throws FileNotFoundException, IOException {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpServletResponse response = (HttpServletResponse) fc.getExternalContext().getResponse();
+ 
+        response.setHeader("Content-Disposition", "attachment; filename=rapport.pdf");
+        response.setContentLength((int) temp.length());
+ 
+        ServletOutputStream out = null;
+ 
+        FileInputStream input = new FileInputStream(temp);
+        byte[] buffer = new byte[1024];
+        out = response.getOutputStream();
+        int i = 0;
+        while ((i = input.read(buffer)) != -1) {
+            out.write(buffer);
+            out.flush();
+        }
+ 
+        fc.responseComplete();
+    }
+    
             
     }
 

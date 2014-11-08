@@ -8,10 +8,12 @@ package info.toegepaste.www.controller;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfString;
 import com.itextpdf.text.pdf.PdfWriter;
 import info.toegepaste.www.model.*;
 import info.toegepaste.www.model.Student;
 import info.toegepaste.www.service.DocentService;
+import info.toegepaste.www.service.PdfService;
 import info.toegepaste.www.service.StudentService;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,51 +27,38 @@ import javax.faces.bean.ManagedBean;
  *
  * @author brams
  */
-@ManagedBean(name="pdfController")
+@ManagedBean(name="PdfController")
 public class PdfController {
-    public static final String RESULT
-            = "D://Studenten.pdf";
-    
-    public List<Student> studenten;
+//    public static final String RESULT
+//            = "D://Studenten.pdf";
     
     @EJB
-    private StudentService studentservice;
+    private PdfService pdfService;
     
-    @PostConstruct
-    public void init() {
-        studenten = studentservice.getAllStudenten();
-    }
+    int i = 7;
     
-    public List<Student> getStudenten() {
-        return studenten;
-    }
-    
-    public void setStudenten(List<Student> studenten) {
-        this.studenten = studenten;
-    }
-    
-
-    public void Write() throws DocumentException, IOException {
-        
-        new PdfController().createPdf(RESULT);
+    public void genereerPDFTest() throws DocumentException, IOException {
+        pdfService.genereerPdfTest();
     }
 
-    public void createPdf(String filename) throws DocumentException, IOException {
-        // step 1
-        Document document = new Document();
-        // step 2
-        PdfWriter.getInstance(document, new FileOutputStream(filename));
-        // step 3
-        document.open();
-        // step 4
-        
 
-//        for (Student student : studenten ) {
-//            document.add(new Paragraph("test"));
-//        }
-        
-        document.add(new Paragraph("Hello World!"));
-        // step 5
-        document.close();
-    }
+
+//    public void Write() throws DocumentException, IOException {
+//        
+//        new PdfController().createPdf(RESULT);
+//        
+//    }
+
+//    public void createPdf(String filename) throws DocumentException, IOException {
+//        // step 1
+//        Document document = new Document();
+//        // step 2
+//        PdfWriter.getInstance(document, new FileOutputStream(filename));
+//        // step 3
+//        document.open();
+//        // step 4
+//        document.add(new Paragraph());
+//        // step 5
+//        document.close();
+//    }
 }
