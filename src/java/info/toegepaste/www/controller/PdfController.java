@@ -44,6 +44,10 @@ public class PdfController {
         return studenten;
     }
     
+    public void setStudenten(List<Student> studenten) {
+        this.studenten = studenten;
+    }
+    
 
     public void Write() throws DocumentException, IOException {
         
