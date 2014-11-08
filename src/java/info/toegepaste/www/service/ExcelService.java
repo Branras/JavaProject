@@ -5,6 +5,10 @@
  */
 package info.toegepaste.www.service;
 
+import java.util.Date;
+import javax.ejb.TransactionAttribute;
+import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
+import javax.persistence.Query;
 import javax.servlet.http.Part;
 
 /**
@@ -14,4 +18,6 @@ import javax.servlet.http.Part;
 public interface ExcelService {
    
     public void insertScore(int studentennummer, int testId, int score, int maxScore);
+    public void insertTest(int vakId, String naam, int maxScore);
+    
 }

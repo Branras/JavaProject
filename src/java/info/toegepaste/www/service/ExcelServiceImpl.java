@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package info.toegepaste.www.service;
+import info.toegepaste.www.model.Vak;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 import javax.ejb.Stateless;
@@ -44,5 +46,29 @@ public class ExcelServiceImpl implements ExcelService{
         q.setParameter(4, testId);
         q.executeUpdate();
         }catch(Exception e){}
+    }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public void insertTest(int vakId, String naam, int maxscore)
+    {
+        try{
+        Query q = em.createNativeQuery("INSERT INTO test (datum, naam, vakid, maxscore) VALUES (?,?,?,?)");
+        q.setParameter(1, new Date());
+        q.setParameter(2, naam);
+        q.setParameter(3, vakId);
+        q.executeUpdate();
+        }catch(Exception e){}
+    }
+    
+    public int getVakId(String naam) {
+        Vak vak =null;
+        try{
+        Query q = em.createNamedQuery("Vak.findByNaam");
+        q.setParameter("naam", naam);
+        vak = (Vak) q.getSingleResult();
+        }catch(Exception e){}
+        
+        return vak.getVakid();
     }
 }

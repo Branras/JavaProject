@@ -7,7 +7,9 @@ package info.toegepaste.www.controller;
 
 import info.toegepaste.www.service.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -25,6 +27,7 @@ import org.apache.poi.ss.usermodel.Row;
 public class ExcelController {
     @EJB
     private ExcelService excelservice;
+    private StudentService studentservice;
     public Part file;
     public String fileContent;
     public String test;
@@ -41,11 +44,9 @@ public class ExcelController {
     public String vakDebug;
     public String testDebug;
     public int totaalDebug;
-    public int studentennrDebug;
-    public String naamDebug;
-    public int scoreDebug;
-    
-    
+    public List<Integer> studentennrDebug = new ArrayList<Integer>();
+    public List<String> naamDebug = new ArrayList<String>();
+    public List<Integer> scoreDebug = new ArrayList<Integer>();
     
     
     public void upload() {
@@ -79,44 +80,22 @@ public class ExcelController {
                                 totaalDebug = cellInt;
                             }else{
                                 if(scoresTeller == 1){
-                                            studentennrDebug = cellInt;
+                                            studentennrDebug.add(cellInt);
                                             scoresTeller++;
                                         }else{
-                                            scoreDebug = cellInt;
+                                            scoreDebug.add(cellInt);
                                             scoresTeller = 1;
                                         }
-                            }
-                            
+                            }   
                             break;
                         case Cell.CELL_TYPE_STRING:
                             System.out.print(cell.getStringCellValue());
                             cellString = cell.getStringCellValue();
                           
-                            switch(cellString.toLowerCase()){
-                                    case "klas":
-                                        infoCel = cellString.toLowerCase();
-                                        break;
-                                    case "vak":
-                                        infoCel = cellString.toLowerCase();
-                                        break;
-                                    case "test":
-                                        infoCel = cellString.toLowerCase();
-                                        break;
-                                    case "score":
-                                        infoCel = cellString.toLowerCase();
-                                        break;
-                                    case "totaal":
-                                        infoCel = cellString.toLowerCase();
-                                        break;
-                                    default:
-                                        infoCel = "  ";
-                                        break;
-                                }
-                            
                             //Als er een titel in de cel zit en steek in infoCel
-//                            if(cellString.toLowerCase() == "vak" || cellString.toLowerCase() == "klas" || cellString.toLowerCase() == "test" || cellString.toLowerCase() == "totaal" || cellString.toLowerCase() == "score"){
-//                                infoCel = cellString.toLowerCase();
-//                            }else{
+                            if(cellString.toLowerCase().equals("vak") || cellString.toLowerCase().equals("klas") || cellString.toLowerCase().equals("test") || cellString.toLowerCase().equals("totaal") || cellString.toLowerCase().equals("score")){
+                                infoCel = cellString.toLowerCase();
+                            }else{
                                 //inhoud in de cell
                                 switch(infoCel){
                                     case "klas":
@@ -129,25 +108,24 @@ public class ExcelController {
                                         testDebug = cellString;
                                         break;
                                     case "score":
-                                        naamDebug = cellString;
+                                        naamDebug.add(cellString);
                                         scoresTeller++;
                                         break;
                                     default:
                                         break;
                                 }
-//                            }
+                            }
                         break;
                     }
-                }
-                
+                }              
                 System.out.println("");
             }
-
       test = "2";
     } catch (IOException e) {
       // Error handling
     }
   }
+    
     public Part getFile() {
     return file;
   }
