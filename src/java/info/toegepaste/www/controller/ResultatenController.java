@@ -164,17 +164,17 @@ public class ResultatenController {
         else scores = resultatenservice.getAllScores();
     }
     
-    public void saveAction()
-    {
-        for(Score score1 : scores){
-            
-                resultatenservice.updateScore(score1);
-            
-            score1.setEditable(false);
-        }
-//        int itsfd = 2;
-//        resultatenservice.updateScore(score);
-    }
+//    public void saveAction()
+//    {
+//        for(Score score1 : scores){
+//            
+//                resultatenservice.updateScore(score1);
+//            
+//            score1.setEditable(false);
+//        }
+////        int itsfd = 2;
+////        resultatenservice.updateScore(score);
+//    }
     
     public void getTotaalVoorVakken()
     {
