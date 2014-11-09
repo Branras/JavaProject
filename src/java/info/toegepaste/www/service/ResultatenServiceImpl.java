@@ -8,6 +8,7 @@ package info.toegepaste.www.service;
 import info.toegepaste.www.model.*;
 import java.math.BigDecimal;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
@@ -16,8 +17,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 import javax.persistence.Table;
+import javax.transaction.UserTransaction;
 
 /**
  *
@@ -27,7 +30,11 @@ import javax.persistence.Table;
 public class ResultatenServiceImpl implements ResultatenService{
     @PersistenceContext
     private EntityManager em;
+    @PersistenceUnit
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("JavaProjectPU");
+    
+    @Resource
+        UserTransaction ut;
     
     @Override
     @TransactionAttribute(REQUIRES_NEW)
@@ -124,6 +131,8 @@ public class ResultatenServiceImpl implements ResultatenService{
     
     public boolean updateScore(Score score){
         EntityManager em1 = emf.createEntityManager();
+        
+        
 //        EntityTransaction et = em.getTransaction();
 //        et.begin();
 //        //Query q = em.createNamedQuery("Score.findByScoreid");
@@ -134,8 +143,15 @@ public class ResultatenServiceImpl implements ResultatenService{
 //        oldScore.setEditable(false);
 //        et.commit();
 //        em1.close();
+        try{
+        ut.begin();
         em1.merge(score);
         em1.close();
+        ut.commit();
+        } catch (Exception e) {
+//            ut.rollback();
+        }
+        
         return true;
     }
 }
