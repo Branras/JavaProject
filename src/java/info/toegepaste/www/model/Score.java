@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -58,7 +59,22 @@ public class Score implements Serializable {
     @JoinColumn(name = "testid", referencedColumnName = "testid")
     @ManyToOne(optional = false)
     private Test testid;
-
+    
+    @Transient
+    boolean editable = false;
+    
+    public boolean isEditable(){
+        return editable;
+    }
+    
+    public void setEditable(boolean editable){
+        this.editable = editable;
+    }
+    
+    public String editAction(Score score){
+        score.setEditable(true);
+        return null;
+    }
     
     
     public Score() {
