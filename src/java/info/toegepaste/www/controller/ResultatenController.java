@@ -7,6 +7,7 @@ package info.toegepaste.www.controller;
 
 import info.toegepaste.www.model.*;
 import info.toegepaste.www.service.*;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -25,7 +26,7 @@ public class ResultatenController {
     private List<Score> scores;
     
     private List<String> totalen;
-    private long algemeenTotaal;
+    private BigDecimal algemeenTotaal;
     
     //selected items
     private int selectedTestId;
@@ -125,11 +126,11 @@ public class ResultatenController {
         this.totalen = totalen;
     }
 
-    public long getAlgemeenTotaal() {
+    public BigDecimal getAlgemeenTotaal() {
         return algemeenTotaal;
     }
 
-    public void setAlgemeenTotaal(long algemeenTotaal) {
+    public void setAlgemeenTotaal(BigDecimal algemeenTotaal) {
         this.algemeenTotaal = algemeenTotaal;
     }
     

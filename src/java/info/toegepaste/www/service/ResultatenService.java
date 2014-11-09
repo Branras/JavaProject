@@ -6,6 +6,7 @@
 package info.toegepaste.www.service;
 
 import info.toegepaste.www.model.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -26,5 +27,5 @@ public interface ResultatenService {
     public boolean updateScore(Score score);
     
     public List<String> getTotaalVoorVakken(int studentId);
-    public long getPercentageVoorStudent(int studentId);
+    public BigDecimal getPercentageVoorStudent(int studentId);
 }

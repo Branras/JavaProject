@@ -6,6 +6,7 @@
 package info.toegepaste.www.service;
 
 import info.toegepaste.www.model.*;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -113,10 +114,10 @@ public class ResultatenServiceImpl implements ResultatenService{
     
     @Override
     @TransactionAttribute(REQUIRES_NEW)
-    public long getPercentageVoorStudent(int studentId) {
+    public BigDecimal getPercentageVoorStudent(int studentId) {
         Query q = em.createNativeQuery("SELECT  ROUND((SUM(s.score) /  SUM(s.maxaantalpunten)) * 100,2) as percentage FROM score s WHERE s.studentid =?");
-        q.setParameter(1, studentId); 
-        return (long) q.getSingleResult();        
+        q.setParameter(1, studentId);
+        return (BigDecimal)q.getSingleResult();        
     }
     
     @Override
