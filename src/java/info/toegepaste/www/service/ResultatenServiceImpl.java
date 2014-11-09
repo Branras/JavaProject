@@ -123,17 +123,18 @@ public class ResultatenServiceImpl implements ResultatenService{
     @Override
     
     public boolean updateScore(Score score){
-        EntityManager em1 = emf.createEntityManager();
-        EntityTransaction et = em.getTransaction();
-        et.begin();
-        //Query q = em.createNamedQuery("Score.findByScoreid");
-        //q.setParameter("scoreid", score.getScoreid());
-        Score oldScore = em.find(Score.class, score.getScoreid());//(Score)q.getSingleResult();
-        oldScore.setScore(score.getScore());
-        oldScore.setMaxaantalpunten(score.getMaxaantalpunten());
-        oldScore.setEditable(false);
-        et.commit();
-        em1.close();
+//        EntityManager em1 = emf.createEntityManager();
+//        EntityTransaction et = em.getTransaction();
+//        et.begin();
+//        //Query q = em.createNamedQuery("Score.findByScoreid");
+//        //q.setParameter("scoreid", score.getScoreid());
+//        Score oldScore = em.find(Score.class, score.getScoreid());//(Score)q.getSingleResult();
+//        oldScore.setScore(score.getScore());
+//        oldScore.setMaxaantalpunten(score.getMaxaantalpunten());
+//        oldScore.setEditable(false);
+//        et.commit();
+//        em1.close();
+        em.merge(score);
         return true;
     }
 }
