@@ -192,10 +192,11 @@
                                         </h:column>
                                         <h:column>
                                             <strong><h:outputText value="#{score.studentid.klasid.naam}"/></strong>
+                                            <h:commandLink value="Edit" action="#{score.editAction(score)}" rendered="#{score.editable}" />
+                                        
                                         </h:column>
                                         <h:column>
-                                            <h:commandLink value="Edit" action="#{score.editAction(score)}" rendered="#{not score.editable}" />
-                                        </h:column>
+                                            </h:column>
                                     </h:dataTable>
                                 </div>
 
