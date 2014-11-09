@@ -25,6 +25,7 @@ public class ResultatenController {
     private List<Score> scores;
     
     private List<String> totalen;
+    private String algemeenTotaal;
     
     //selected items
     private int selectedTestId;
@@ -123,7 +124,14 @@ public class ResultatenController {
     public void setTotalen(List<String> totalen) {
         this.totalen = totalen;
     }
-    
+
+    public String getAlgemeenTotaal() {
+        return algemeenTotaal;
+    }
+
+    public void setAlgemeenTotaal(String algemeenTotaal) {
+        this.algemeenTotaal = algemeenTotaal;
+    }
     
     
     public void getScoresByTest()
@@ -163,7 +171,10 @@ public class ResultatenController {
     public void getTotaalVoorVakken()
     {
         if(selectedStudentId != 0)
+        {
         totalen = resultatenservice.getTotaalVoorVakken(selectedStudentId);
+        algemeenTotaal = resultatenservice.getPercentageVoorStudent(selectedStudentId);
+        }
     }
     
 }

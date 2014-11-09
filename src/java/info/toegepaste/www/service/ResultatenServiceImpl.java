@@ -113,6 +113,14 @@ public class ResultatenServiceImpl implements ResultatenService{
     
     @Override
     @TransactionAttribute(REQUIRES_NEW)
+    public String getPercentageVoorStudent(int studentId) {
+        Query q = em.createNativeQuery("SELECT  ROUND((SUM(s.score) /  SUM(s.maxaantalpunten)) * 100,2) as percentage FROM score s WHERE s.studentid =?");
+        q.setParameter(1, studentId); 
+        return (String) q.getSingleResult();        
+    }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
     public boolean updateScore(Score score){
         EntityManager em1 = emf.createEntityManager();
         EntityTransaction et = em1.getTransaction();
