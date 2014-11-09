@@ -168,6 +168,9 @@ public class ResultatenController {
     public void saveAction()
     {
         for(Score score1 : scores){
+            if(score1.isEditable() == true){
+                resultatenservice.updateScore(score1);
+            }
             score1.setEditable(false);
         }
 //        int itsfd = 2;
