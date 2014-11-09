@@ -130,8 +130,8 @@ public class ResultatenServiceImpl implements ResultatenService{
     @Override
     @TransactionAttribute(REQUIRES_NEW)
     public boolean updateScore(Score score){
-        EntityManager em1 = emf.createEntityManager();
-        
+//        EntityManager em1 = emf.createEntityManager();
+//        
         
 //        EntityTransaction et = em.getTransaction();
 //        et.begin();
@@ -144,10 +144,9 @@ public class ResultatenServiceImpl implements ResultatenService{
 //        et.commit();
 //        em1.close();
         try{
-        ut.begin();
-        em1.merge(score);
-        em1.close();
-        ut.commit();
+        
+        em.merge(score);
+        
         } catch (Exception e) {
 //            ut.rollback();
         }
