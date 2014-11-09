@@ -11,8 +11,11 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.Table;
 
 /**
  *
@@ -104,5 +107,19 @@ public class ResultatenServiceImpl implements ResultatenService{
         Query q = em.createNativeQuery("SELECT v.naam as vaknaam , SUM(s.score) as totaal, SUM(s.maxaantalpunten) as maximum, ROUND((SUM(s.score) /  SUM(s.maxaantalpunten)) * 100,2) as percentage FROM score s JOIN test t ON s.testid = t.testid JOIN vak v ON t.vakid = v.vakid WHERE s.studentid =? GROUP BY t.vakid");
         q.setParameter(1, studentId); 
         return (List<String>) q.getResultList();        
+    }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public boolean updateScore(Score score){
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        Query q = em.createNamedQuery("Score.findByScoreid");
+        q.setParameter("scoreid", score.getScoreid());
+        Score oldScore = (Score)q.getSingleResult();
+        oldScore.setScore(score.getScore());
+        oldScore.setMaxaantalpunten(score.getMaxaantalpunten());
+        oldScore.setEditable(false);
+        return true;
     }
 }
