@@ -128,7 +128,7 @@ public class ResultatenServiceImpl implements ResultatenService{
     }
     
     @Override
-    
+    @TransactionAttribute(REQUIRES_NEW)
     public boolean updateScore(Score score){
         EntityManager em1 = emf.createEntityManager();
         
