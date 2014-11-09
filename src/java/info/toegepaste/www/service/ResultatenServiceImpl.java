@@ -13,6 +13,7 @@ import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.Table;
@@ -25,6 +26,7 @@ import javax.persistence.Table;
 public class ResultatenServiceImpl implements ResultatenService{
     @PersistenceContext
     private EntityManager em;
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("JavaProjectPU");
     
     @Override
     @TransactionAttribute(REQUIRES_NEW)
@@ -112,6 +114,7 @@ public class ResultatenServiceImpl implements ResultatenService{
     @Override
     @TransactionAttribute(REQUIRES_NEW)
     public boolean updateScore(Score score){
+        EntityManager em1 = 
         EntityTransaction et = em.getTransaction();
         et.begin();
         Query q = em.createNamedQuery("Score.findByScoreid");
