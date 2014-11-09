@@ -52,7 +52,7 @@ public class StudentServiceImpl implements StudentService {
     @TransactionAttribute(REQUIRES_NEW)
     public void insertStudent(String familienaam, String voornaam, String Email, int nummer, int klasId) {
         try{
-        Query q = em.createNativeQuery("INSERT INTO Student (email, familienaam, nummer, voornaam, klasid) VALUES (?,?,?,?,?)");
+        Query q = em.createNativeQuery("INSERT INTO student (email, familienaam, nummer, voornaam, klasid) VALUES (?,?,?,?,?)");
         q.setParameter(1, Email);
         q.setParameter(2, familienaam);
         q.setParameter(3, nummer);
