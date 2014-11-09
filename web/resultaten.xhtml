@@ -152,7 +152,7 @@
                                             <strong><h:outputText value="#{score.testid.naam}"/></strong>
                                         </h:column>
                                         <h:column>
-                                            <h:outputText value="#{score.score} / #{score.maxaantalpunten}" rendered="#{not score.editable}"/>
+                                            <h:outputText value="#{score.score}" rendered="#{not score.editable}"/>
                                             <h:inputText value="#{score.score}" rendered="#{score.editable}"/>
                                             <h:outputText value="#/ #{score.maxaantalpunten}"/>
                                         </h:column>
