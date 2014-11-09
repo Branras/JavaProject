@@ -26,5 +26,5 @@ public interface ResultatenService {
     public boolean updateScore(Score score);
     
     public List<String> getTotaalVoorVakken(int studentId);
-    public String getPercentageVoorStudent(int studentId);
+    public double getPercentageVoorStudent(int studentId);
 }
