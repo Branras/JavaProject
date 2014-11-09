@@ -118,6 +118,8 @@ public class ExcelServiceImpl implements ExcelService{
         }catch(Exception e){}
     }
     
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
     public void upload(Part file) {
     try {
         //declaratie variabelen
@@ -137,13 +139,23 @@ public class ExcelServiceImpl implements ExcelService{
         List<String> naamDebug = new ArrayList<String>();
         List<Integer> scoreDebug = new ArrayList<Integer>();
         
+        Iterator<Row> rowIterator = null;
         
+        
+        if(file.getSubmittedFileName().contains("xlsx")){
         //lees de content stream in naar de hssfworkbook
       XSSFWorkbook workbook = new XSSFWorkbook(file.getInputStream());
       //kies de juiste pagina (eerste)
       XSSFSheet sheet = workbook.getSheetAt(0);
-      
-      Iterator<Row> rowIterator = sheet.iterator();
+      rowIterator = sheet.iterator();
+        }else{
+            //lees de content stream in naar de hssfworkbook
+      HSSFWorkbook workbook = new HSSFWorkbook(file.getInputStream());
+      //kies de juiste pagina (eerste)
+      HSSFSheet sheet = workbook.getSheetAt(0);
+      rowIterator = sheet.iterator();
+        }
+        
             while (rowIterator.hasNext())
             {
                 Row row = rowIterator.next();
