@@ -158,6 +158,8 @@
                                             <h:outputText value="#{score.testid.datum}"/>
                                         </h:column>
                                         <h:column>
+                                            
+                                            
                                             <h:outputText value="#{score.studentid.familienaam} #{score.studentid.voornaam}"/>
                                         </h:column>
                                         <h:column>
@@ -168,7 +170,7 @@
                                             <h:commandLink value="Edit" action="#{score.editAction(score)}" rendered="#{not score.editable}"  />
                                         </h:column>
                                     </h:dataTable>
-
+                                    <h:commandButton value="Save Changes" action="#{ResultatenController.saveAction()}"/>
                                 </div>
 
                                 <div id="klassen">

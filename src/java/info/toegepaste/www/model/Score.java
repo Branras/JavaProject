@@ -76,6 +76,10 @@ public class Score implements Serializable {
         return null;
     }
     
+    public String saveAction(){
+        
+        return null;
+    }
     
     public Score() {
     }

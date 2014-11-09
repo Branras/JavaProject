@@ -144,4 +144,9 @@ public class ResultatenController {
         else scores = resultatenservice.getAllScores();
     }
     
+    public void saveAction()
+    {
+        
+    }
+    
 }
