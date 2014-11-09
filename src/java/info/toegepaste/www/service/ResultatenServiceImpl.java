@@ -30,11 +30,11 @@ import javax.transaction.UserTransaction;
 public class ResultatenServiceImpl implements ResultatenService{
     @PersistenceContext
     private EntityManager em;
-    @PersistenceUnit
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("JavaProjectPU");
-    
-    @Resource
-        UserTransaction ut;
+//    @PersistenceUnit
+//    EntityManagerFactory emf = Persistence.createEntityManagerFactory("JavaProjectPU");
+//    
+//    @Resource
+//        UserTransaction ut;
     
     @Override
     @TransactionAttribute(REQUIRES_NEW)
