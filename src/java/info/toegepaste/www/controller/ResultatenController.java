@@ -12,12 +12,14 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author brams
  */
 @ManagedBean(name="resultatenController")
+@SessionScoped
 public class ResultatenController {
     private List<Klas> klassen;
     private List<Test> testen;
