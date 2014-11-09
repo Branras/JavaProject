@@ -120,6 +120,7 @@ public class ResultatenServiceImpl implements ResultatenService{
         oldScore.setScore(score.getScore());
         oldScore.setMaxaantalpunten(score.getMaxaantalpunten());
         oldScore.setEditable(false);
+        et.commit();
         return true;
     }
 }
