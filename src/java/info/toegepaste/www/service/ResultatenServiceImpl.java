@@ -8,9 +8,13 @@ package info.toegepaste.www.service;
 import info.toegepaste.www.model.*;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -18,6 +22,12 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.Table;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 /**
  *
@@ -122,8 +132,10 @@ public class ResultatenServiceImpl implements ResultatenService{
     
     @Override
     public boolean updateScore(Score score){
-        EntityManager em1 = emf.createEntityManager();
-        EntityTransaction et = em1.getTransaction();
+        try {
+            UserTransaction et = (UserTransaction)new InitialContext().lookup("java:comp/UserTransaction");
+            EntityManager em1 = emf.createEntityManager();
+        
         et.begin();
         //Query q = em.createNamedQuery("Score.findByScoreid");
         //q.setParameter("scoreid", score.getScoreid());
@@ -134,5 +146,24 @@ public class ResultatenServiceImpl implements ResultatenService{
         et.commit();
         em1.close();
         return true;
+        } catch (NamingException ex) {
+            Logger.getLogger(ResultatenServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NotSupportedException ex) {
+            Logger.getLogger(ResultatenServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SystemException ex) {
+            Logger.getLogger(ResultatenServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RollbackException ex) {
+            Logger.getLogger(ResultatenServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (HeuristicMixedException ex) {
+            Logger.getLogger(ResultatenServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (HeuristicRollbackException ex) {
+            Logger.getLogger(ResultatenServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SecurityException ex) {
+            Logger.getLogger(ResultatenServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalStateException ex) {
+            Logger.getLogger(ResultatenServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+        
     }
 }
