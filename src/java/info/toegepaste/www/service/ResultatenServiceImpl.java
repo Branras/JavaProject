@@ -115,7 +115,7 @@ public class ResultatenServiceImpl implements ResultatenService{
     @TransactionAttribute(REQUIRES_NEW)
     public boolean updateScore(Score score){
         EntityManager em1 = emf.createEntityManager();
-        EntityTransaction et = em.getTransaction();
+        EntityTransaction et = em1.getTransaction();
         et.begin();
         //Query q = em.createNamedQuery("Score.findByScoreid");
         //q.setParameter("scoreid", score.getScoreid());
