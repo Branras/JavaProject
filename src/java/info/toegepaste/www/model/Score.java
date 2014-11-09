@@ -61,7 +61,7 @@ public class Score implements Serializable {
     private Test testid;
     
     @Transient
-    boolean editable;
+    boolean editable = true;
     
     public boolean isEditable(){
         return editable;
