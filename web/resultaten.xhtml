@@ -170,12 +170,12 @@
 
                                         <h:column>                                            
                                             <h:commandLink value="Edit" action="#{score.editAction(score)}" rendered="#{not score.editable}"  />
-                                            <h:commandLink value="Save" action="#{ResultatenController.saveAction(score)}" rendered="#{score.editable}"/>
+                                            <h:commandLink value="Save" action="#{resultatenController.saveAction(score)}" rendered="#{score.editable}"/>
                                         </h:column>
                                     </h:dataTable>
 
 
-                                    <h:commandButton value="Save Changes" action="#{ResultatenController.saveAction()}"/>
+                                    <h:commandButton value="Save Changes" action="#{resultatenController.saveAction()}"/>
 
                                 </div>
 
