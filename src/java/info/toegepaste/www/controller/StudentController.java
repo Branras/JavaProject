@@ -30,6 +30,7 @@ public class StudentController {
     private String Email;
     private int nummer;
     private int klasId;
+    private int selectedKlasId;
     
     @EJB
     private StudentService studentservice;
@@ -103,6 +104,15 @@ public class StudentController {
     public void setKlasId(int klasId) {
         this.klasId = klasId;
     }
+
+    public int getSelectedKlasId() {
+        return selectedKlasId;
+    }
+
+    public void setSelectedKlasId(int selectedKlasId) {
+        this.selectedKlasId = selectedKlasId;
+    }
+    
     
     public void insertKlas()
     {
@@ -111,6 +121,6 @@ public class StudentController {
     
     public void insertStudent()
     {
-        studentservice.insertStudent(familienaam, voornaam, Email, nummer, klasId);
+        studentservice.insertStudent(familienaam, voornaam, Email, nummer, selectedKlasId);
     }
 }

@@ -99,7 +99,7 @@
                                 
                                 <p>
                                     <label for="input_klas">Klas: </label>
-                                    <h:selectOneMenu id="input_klas" value="#{studentController.klassen}">
+                                    <h:selectOneMenu id="input_klas" value="#{studentController.selectedKlasId}">
                                         <f:selectItems value="#{studentController.klassen}" var="klas" itemValue="#{klas.klasid}" itemLabel="#{klas.naam}" />
                                     </h:selectOneMenu>
                                 </p>
