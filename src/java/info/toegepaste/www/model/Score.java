@@ -59,6 +59,16 @@ public class Score implements Serializable {
     @ManyToOne(optional = false)
     private Test testid;
 
+    boolean editable;
+    
+    public boolean isEditable(){
+        return editable;
+    }
+    
+    public void setEditable(boolean editable){
+        this.editable = editable;
+    }
+    
     public Score() {
     }
 
