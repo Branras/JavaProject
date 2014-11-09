@@ -69,6 +69,11 @@ public class Score implements Serializable {
         this.editable = editable;
     }
     
+    public String editAction(Score score){
+        score.setEditable(true);
+        return null;
+    }
+    
     public Score() {
     }
 

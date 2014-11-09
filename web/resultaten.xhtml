@@ -184,8 +184,8 @@
                                             <h:outputText value="#{score.testid.naam}"/>
                                         </h:column>
                                         <h:column>
-                                            <h:outputText value="#{score.score} / #{score.maxaantalpunten}"/>
-                                        </h:column>
+                                            <h:outputText value="#{score.score} / #{score.maxaantalpunten}" rendered="#{not score.editable}"/>
+                                            <h:inputText value="#{score.score}" rendered="#{score.editable}"/>
                                         <h:column>
                                             <h:outputText value="#{score.testid.datum}"/>
                                         </h:column>
@@ -194,6 +194,9 @@
                                         </h:column>
                                         <h:column>
                                             <strong><h:outputText value="#{score.studentid.klasid.naam}"/></strong>
+                                        </h:column>
+                                        <h:column>
+                                            <h:commandLink value="Edit" action="#{score.editAction(score)}" rendered="#{not score.editable}" />
                                         </h:column>
                                     </h:dataTable>
                                 </div>
