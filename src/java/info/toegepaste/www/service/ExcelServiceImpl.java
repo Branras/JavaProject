@@ -125,7 +125,7 @@ public class ExcelServiceImpl implements ExcelService {
 
     @Override
     @TransactionAttribute(REQUIRES_NEW)
-    public void upload(Part file) {
+    public String upload(Part file) {
         try {
         //declaratie variabelen
             //Variabelen voor tijdelijke gegevens
@@ -134,6 +134,7 @@ public class ExcelServiceImpl implements ExcelService {
             int cellNr;
             String infoCel = " ";
             int scoresTeller = 1;
+            String fout = " ";
 
             //debug of overzetvariabelen
             String klasDebug = " ";
@@ -152,14 +153,17 @@ public class ExcelServiceImpl implements ExcelService {
                 //kies de juiste pagina (eerste)
                 XSSFSheet sheet = workbook.getSheetAt(0);
                 rowIterator = sheet.iterator();
-            } else {
+            } else if (file.getSubmittedFileName().contains("xls")){
                 //lees de content stream in naar de hssfworkbook
                 HSSFWorkbook workbook = new HSSFWorkbook(file.getInputStream());
                 //kies de juiste pagina (eerste)
                 HSSFSheet sheet = workbook.getSheetAt(0);
                 rowIterator = sheet.iterator();
+            } else{
+                fout = "Het geuploadde bestand heeft niet de juiste indeling";
+                
             }
-
+            if(rowIterator != null){
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
                 //Leest elke horizontale lijn van links naar rechts uit in de console
@@ -218,6 +222,7 @@ public class ExcelServiceImpl implements ExcelService {
                     }
                 }
             }
+            }
             System.out.println("");
             int testId = 0;
             int vakId = 0;
@@ -246,8 +251,10 @@ public class ExcelServiceImpl implements ExcelService {
                 index++;
             }
 
+            return fout;
         } catch (IOException e) {
             // Error handling
+            return "Er is iets misgelopen bij het inlezen van het bestand.";
         }
     }
 

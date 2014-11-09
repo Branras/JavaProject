@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+
+        <link rel="stylesheet" type="text/css" href="css/skel.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/style-wide.css" />
+
+        <title>Score Tracker | Fout</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+        <script src="js/init.js"></script>
+
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+
+        <script>
+            //DIT TOEVOEGEN OP IEDERE PAGINA
+            //MUCH SECURITY
+            //VERY AWESOME
+            //NICE CODE
+            var docentid = null;
+            docentid = " " + '<h:outputText value="${sessionScope.docent.getId()}"/>';
+            if (docentid === " ")
+            {
+                //alert("bye bye");
+                window.location = "index.xhtml";
+            }
+        </script>
+
+        
+    </h:head>
+    <h:body>
+        <!-- Header -->
+        <div id="header">
+
+            <!-- Logo -->
+            <h1><a href="home.xhtml" id="logo">Score Tracker <em>by Team 2</em></a></h1>
+            <!--<h1><a href="index.html" id="logo">Score Tracker <em>by Team 2</em></em></a></h1-->
+
+            <!-- Nav -->
+            <p></p>
+            <h:form>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="home.xhtml">Home</a></li>
+                        <li><a href="docenten.xhtml">Docenten</a></li>
+                        <li><a href="resultaten.xhtml">Resultaten</a></li>
+                        <li><a href="studenten.xhtml">Studenten</a></li>
+                        <li><a href="#">Welkom <strong><h:outputText value="${sessionScope.docent.getNaam()}"/></strong></a></li>
+                        <li><h:commandLink action="#{loginController.logOut()}">logout</h:commandLink></li>
+                    </ul>
+                </nav>
+            </h:form>
+
+        </div>
+
+        <!-- Main -->
+        <section class="wrapper style1">
+            <div class="container">
+                <div id="content">
+
+                    <article>
+                        <header>
+                            <h2>Fout!</h2>
+                        </header>
+
+                        <article>
+                            <header>
+                                <p><h:outputText value="${excelController.foutmelding}"/></p>
+                            </header>
+                        </article>
+                </div>
+            </div>
+        </section>			
+
+        <!-- Footer -->
+        <div id="footer">
+            <!-- Copyright -->
+            <div class="copyright">
+                <ul class="menu">
+                    <li>&copy; Score Tracker. All rights reserved: Team 2</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </div>
+    </h:body>
+</html>
+

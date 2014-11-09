@@ -22,5 +22,5 @@ public interface ExcelService {
     public int getVakId(String naam);
     public int getTestId(String naam);
     public int getKlasId(String naam);
-    public void upload(Part file);
+    public String upload(Part file);
 }

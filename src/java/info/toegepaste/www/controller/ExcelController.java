@@ -21,9 +21,11 @@ public class ExcelController {
     private ExcelService excelservice;
     public Part file;
     public String fileContent;
+    public String foutmelding = " ";
     
-    public void upload() {
-        excelservice.upload(file);
+    public String upload() {
+        foutmelding = excelservice.upload(file);
+        return "fout";
   }
     
     public Part getFile() {
