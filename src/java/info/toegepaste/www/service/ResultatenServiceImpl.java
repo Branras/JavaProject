@@ -113,10 +113,10 @@ public class ResultatenServiceImpl implements ResultatenService{
     
     @Override
     @TransactionAttribute(REQUIRES_NEW)
-    public double getPercentageVoorStudent(int studentId) {
+    public long getPercentageVoorStudent(int studentId) {
         Query q = em.createNativeQuery("SELECT  ROUND((SUM(s.score) /  SUM(s.maxaantalpunten)) * 100,2) as percentage FROM score s WHERE s.studentid =?");
         q.setParameter(1, studentId); 
-        return (double) q.getSingleResult();        
+        return (long) q.getSingleResult();        
     }
     
     @Override

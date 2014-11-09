@@ -25,7 +25,7 @@ public class ResultatenController {
     private List<Score> scores;
     
     private List<String> totalen;
-    private double algemeenTotaal;
+    private long algemeenTotaal;
     
     //selected items
     private int selectedTestId;
@@ -125,11 +125,11 @@ public class ResultatenController {
         this.totalen = totalen;
     }
 
-    public double getAlgemeenTotaal() {
+    public long getAlgemeenTotaal() {
         return algemeenTotaal;
     }
 
-    public void setAlgemeenTotaal(double algemeenTotaal) {
+    public void setAlgemeenTotaal(long algemeenTotaal) {
         this.algemeenTotaal = algemeenTotaal;
     }
     
