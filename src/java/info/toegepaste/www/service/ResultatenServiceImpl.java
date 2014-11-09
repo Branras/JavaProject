@@ -127,30 +127,30 @@ public class ResultatenServiceImpl implements ResultatenService{
         return (BigDecimal)q.getSingleResult();        
     }
     
-    @Override
-    @TransactionAttribute(REQUIRES_NEW)
-    public boolean updateScore(Score score){
-//        EntityManager em1 = emf.createEntityManager();
+//    @Override
+//    @TransactionAttribute(REQUIRES_NEW)
+//    public boolean updateScore(Score score){
+////        EntityManager em1 = emf.createEntityManager();
+////        
 //        
-        
-//        EntityTransaction et = em.getTransaction();
-//        et.begin();
-//        //Query q = em.createNamedQuery("Score.findByScoreid");
-//        //q.setParameter("scoreid", score.getScoreid());
-//        Score oldScore = em.find(Score.class, score.getScoreid());//(Score)q.getSingleResult();
-//        oldScore.setScore(score.getScore());
-//        oldScore.setMaxaantalpunten(score.getMaxaantalpunten());
-//        oldScore.setEditable(false);
-//        et.commit();
-//        em1.close();
-//        try{
-//        
-//        em.merge(score);
-//        
-//        } catch (Exception e) {
-////            ut.rollback();
-//        }
-//        
-        return true;
-    }
+////        EntityTransaction et = em.getTransaction();
+////        et.begin();
+////        //Query q = em.createNamedQuery("Score.findByScoreid");
+////        //q.setParameter("scoreid", score.getScoreid());
+////        Score oldScore = em.find(Score.class, score.getScoreid());//(Score)q.getSingleResult();
+////        oldScore.setScore(score.getScore());
+////        oldScore.setMaxaantalpunten(score.getMaxaantalpunten());
+////        oldScore.setEditable(false);
+////        et.commit();
+////        em1.close();
+////        try{
+////        
+////        em.merge(score);
+////        
+////        } catch (Exception e) {
+//////            ut.rollback();
+////        }
+////        
+//        return true;
+//    }
 }
