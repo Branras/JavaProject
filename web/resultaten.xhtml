@@ -163,7 +163,7 @@
                                         </h:column>
                                         
                                         <h:column>                                            
-                                            <h:commandLink value="Edit" action="#{score.editAction(score)}"  />
+                                            <h:commandLink value="Edit" action="#{score.editAction(score)}" rendered="#{not score.editable}"  />
                                         </h:column>
                                     </h:dataTable>
 
