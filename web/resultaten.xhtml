@@ -113,7 +113,7 @@
                                         <h:inputFile id="excel" value="#{ExcelController.file}"/>
                                         <h:commandButton value="UPLOAD" action="#{ExcelController.upload}"/>
                                     </h:form></p>
-                                
+
                                 <p><a href="files/Template.xlsx">Download de Excel template</a></p>
                             </header>
                         </article>
@@ -160,20 +160,23 @@
                                             <h:outputText value="#{score.testid.datum}"/>
                                         </h:column>
                                         <h:column>
-                                            
-                                            
+
+
                                             <h:outputText value="#{score.studentid.familienaam} #{score.studentid.voornaam}"/>
                                         </h:column>
                                         <h:column>
                                             <h:outputText value="#{score.studentid.klasid.naam}"/>
                                         </h:column>
-                                        
+
                                         <h:column>                                            
                                             <h:commandLink value="Edit" action="#{score.editAction(score)}" rendered="#{not score.editable}"  />
                                             <h:commandLink value="Save" action="#{ResultatenController.saveAction(score)}" rendered="#{score.editable}"/>
                                         </h:column>
                                     </h:dataTable>
-                                    <h:commandButton value="Save Changes" action="#{ResultatenController.saveAction()}"/>
+
+                                    <form>
+                                        <h:commandButton value="Save Changes" action="#{ResultatenController.saveAction()}"/>
+                                    </form>
                                 </div>
 
                                 <div id="klassen">
@@ -205,7 +208,7 @@
                                             <strong><h:outputText value="#{score.studentid.klasid.naam}"/></strong>
 
                                         </h:column>
-                                        
+
                                     </h:dataTable>
                                 </div>
 
@@ -250,6 +253,7 @@
 
                                         <f:ajax event="change" render="tableStudents" listener="#{resultatenController.getScoresByStudent}" execute="students"/>
                                         <f:ajax event="change" render="tableTotalen" listener="#{resultatenController.getTotaalVoorVakken}" execute="students"/>
+                                        <f:ajax event="change" render="algemeenTotaal" listener="#{resultatenController.getTotaalVoorVakken}" execute="students"/>
                                     </h:selectOneMenu>
 
                                     <h:dataTable id="tableStudents" border="2" var="score" value="#{resultatenController.scores}">
@@ -275,23 +279,23 @@
                                             <h:outputText value="#{score.studentid.klasid.naam}"/>
                                         </h:column>
                                     </h:dataTable>
-                                    
+
                                     <p>Totaal voor elk vak:</p>
                                     <h:dataTable id="tableTotalen" border="2" var="totaal" value="#{resultatenController.totalen}">
-                                         <h:column>
-                                             <h:outputText value="#{totaal[0]}"/>
-                                         </h:column>
-                                        
                                         <h:column>
-                                             <h:outputText value="#{totaal[1]} / #{totaal[2]}"/>
-                                         </h:column>
-                                        
+                                            <h:outputText value="#{totaal[0]}"/>
+                                        </h:column>
+
                                         <h:column>
-                                             <h:outputText value="==> #{totaal[3]} %"/>
-                                         </h:column>
+                                            <h:outputText value="#{totaal[1]} / #{totaal[2]}"/>
+                                        </h:column>
+
+                                        <h:column>
+                                            <h:outputText value="==> #{totaal[3]} %"/>
+                                        </h:column>
                                     </h:dataTable>
-                                    
-                                    <p>Algemeen totaal: <h:outputText value="#{resultatenController.algemeenTotaal}"/></p>
+
+                                    <p>Algemeen totaal: <h:outputText id="algemeenTotaal" value="#{resultatenController.algemeenTotaal}"/> %</p>
 
                                 </div>
 
