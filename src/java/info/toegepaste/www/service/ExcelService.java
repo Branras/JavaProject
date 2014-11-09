@@ -19,5 +19,8 @@ public interface ExcelService {
    
     public void insertScore(int studentennummer, int testId, int score, int maxScore);
     public void insertTest(int vakId, String naam, int maxScore);
-    
+    public int getVakId(String naam);
+    public int getTestId(String naam);
+    public int getKlasId(String naam);
+    public void upload(Part file);
 }
