@@ -123,7 +123,7 @@ public class ResultatenServiceImpl implements ResultatenService{
     @Override
     
     public boolean updateScore(Score score){
-//        EntityManager em1 = emf.createEntityManager();
+        EntityManager em1 = emf.createEntityManager();
 //        EntityTransaction et = em.getTransaction();
 //        et.begin();
 //        //Query q = em.createNamedQuery("Score.findByScoreid");
@@ -134,7 +134,8 @@ public class ResultatenServiceImpl implements ResultatenService{
 //        oldScore.setEditable(false);
 //        et.commit();
 //        em1.close();
-        em.merge(score);
+        em1.merge(score);
+        em1.close();
         return true;
     }
 }
