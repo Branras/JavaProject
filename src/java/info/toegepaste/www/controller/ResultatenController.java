@@ -156,6 +156,7 @@ public class ResultatenController {
     
     public void saveAction(Score score)
     {
+        int itsfd = 2;
         resultatenservice.updateScore(score);
     }
     
