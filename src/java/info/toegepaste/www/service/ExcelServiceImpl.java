@@ -24,6 +24,8 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 /**
@@ -137,9 +139,9 @@ public class ExcelServiceImpl implements ExcelService{
         
         
         //lees de content stream in naar de hssfworkbook
-      HSSFWorkbook workbook = new HSSFWorkbook(file.getInputStream());
+      XSSFWorkbook workbook = new XSSFWorkbook(file.getInputStream());
       //kies de juiste pagina (eerste)
-      HSSFSheet sheet = workbook.getSheetAt(0);
+      XSSFSheet sheet = workbook.getSheetAt(0);
       
       Iterator<Row> rowIterator = sheet.iterator();
             while (rowIterator.hasNext())
