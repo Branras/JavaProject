@@ -163,10 +163,13 @@ public class ResultatenController {
         else scores = resultatenservice.getAllScores();
     }
     
-    public void saveAction(Score score)
+    public void saveAction()
     {
-        int itsfd = 2;
-        resultatenservice.updateScore(score);
+        for(Score score1 : scores){
+            score1.setEditable(false);
+        }
+//        int itsfd = 2;
+//        resultatenservice.updateScore(score);
     }
     
     public void getTotaalVoorVakken()
