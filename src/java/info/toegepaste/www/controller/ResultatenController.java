@@ -154,9 +154,9 @@ public class ResultatenController {
         else scores = resultatenservice.getAllScores();
     }
     
-    public void saveAction()
+    public void saveAction(Score score)
     {
-        
+        resultatenservice.updateScore(score);
     }
     
     public void getTotaalVoorVakken()
