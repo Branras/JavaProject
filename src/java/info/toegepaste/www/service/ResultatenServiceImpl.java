@@ -97,4 +97,12 @@ public class ResultatenServiceImpl implements ResultatenService{
         q.setParameter("studentid", student);
         return (List<Score>) q.getResultList();        
     }
+    
+    @Override
+    @TransactionAttribute(REQUIRES_NEW)
+    public List<String> getTotaalVoorVakken(int studentId) {
+        Query q = em.createNativeQuery("SELECT v.naam as vaknaam , SUM(s.score) as totaal, SUM(s.maxaantalpunten) as maximum, ROUND((SUM(s.score) /  SUM(s.maxaantalpunten)) * 100,2) as percentage FROM score s JOIN test t ON s.testid = t.testid JOIN vak v ON t.vakid = v.vakid WHERE s.studentid =? GROUP BY t.vakid");
+        q.setParameter(1, studentId); 
+        return (List<String>) q.getResultList();        
+    }
 }

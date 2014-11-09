@@ -248,6 +248,7 @@
                                         <f:selectItems value="#{resultatenController.studenten}" var="student" itemLabel="#{student.familienaam} #{student.voornaam}" itemValue="#{student.studentid}" />
 
                                         <f:ajax event="change" render="tableStudents" listener="#{resultatenController.getScoresByStudent}" execute="students"/>
+                                        <f:ajax event="change" render="tableTotalen" listener="#{resultatenController.getTotaalVoorVakken}" execute="students"/>
                                     </h:selectOneMenu>
 
                                     <h:dataTable id="tableStudents" border="2" var="score" value="#{resultatenController.scores}">
@@ -273,6 +274,22 @@
                                             <h:outputText value="#{score.studentid.klasid.naam}"/>
                                         </h:column>
                                     </h:dataTable>
+                                    
+                                    <p>Totaal voor elk vak:</p>
+                                    <h:dataTable id="tableTotalen" border="2" var="totaal" value="#{resultatenController.totalen}">
+                                         <h:column>
+                                             <h:outputText value="#{totaal[0]}"/>
+                                         </h:column>
+                                        
+                                        <h:column>
+                                             <h:outputText value="#{totaal[1]} / #{totaal[2]}"/>
+                                         </h:column>
+                                        
+                                        <h:column>
+                                             <h:outputText value="==> #{totaal[3]} %"/>
+                                         </h:column>
+                                    </h:dataTable>
+
                                 </div>
 
 

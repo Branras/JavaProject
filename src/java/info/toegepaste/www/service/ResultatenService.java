@@ -23,4 +23,6 @@ public interface ResultatenService {
     public List<Score> getScoresByKlas(int klasId);
     public List<Score> getScoresByVak(int vakId);
     public List<Score> getScoresByStudent(int studentId);
+    
+    public List<String> getTotaalVoorVakken(int studentId);
 }

@@ -24,6 +24,8 @@ public class ResultatenController {
     private List<Student> studenten;
     private List<Score> scores;
     
+    private List<String> totalen;
+    
     //selected items
     private int selectedTestId;
     private int selectedKlasId;
@@ -113,6 +115,14 @@ public class ResultatenController {
     public void setSelectedStudentId(int selectedStudentId) {
         this.selectedStudentId = selectedStudentId;
     }
+
+    public List<String> getTotalen() {
+        return totalen;
+    }
+
+    public void setTotalen(List<String> totalen) {
+        this.totalen = totalen;
+    }
     
     
     
@@ -147,6 +157,12 @@ public class ResultatenController {
     public void saveAction()
     {
         
+    }
+    
+    public void getTotaalVoorVakken()
+    {
+        if(selectedStudentId != 0)
+        totalen = resultatenservice.getTotaalVoorVakken(selectedStudentId);
     }
     
 }
