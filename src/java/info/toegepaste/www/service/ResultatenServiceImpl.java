@@ -143,14 +143,14 @@ public class ResultatenServiceImpl implements ResultatenService{
 //        oldScore.setEditable(false);
 //        et.commit();
 //        em1.close();
-        try{
-        
-        em.merge(score);
-        
-        } catch (Exception e) {
-//            ut.rollback();
-        }
-        
+//        try{
+//        
+//        em.merge(score);
+//        
+//        } catch (Exception e) {
+////            ut.rollback();
+//        }
+//        
         return true;
     }
 }
